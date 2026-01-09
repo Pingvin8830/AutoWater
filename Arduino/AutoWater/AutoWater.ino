@@ -10,15 +10,14 @@ const String VALUES_FILENAME        = "values.log";
 const String LOG_FILENAME           = "main.log";
 
 // Sensor limits
-const int SENSOR_MIN                = 503;
-const int SENSOR_MAX                = 338;
+const int SENSOR_MIN                = 338;
+const int SENSOR_MAX                = 503;
 const int MOISTURE_MIN              = 10; // percents
 
 // Libs
 #include "RTClib.h"             // Библиотека часов реального времени
 #include <SD.h>                 // Библиотека SD карты памяти
 #include <LiquidCrystal_I2C.h>  // Библиотека ЖКД
-#include <TimerOne.h>           // Прерывания по таймеру
 
 // Modules
 RTC_DS1307 rtc;                     // Часы DS1307. I2C адреса 0x50, 0x68
@@ -31,13 +30,12 @@ const int STATE_LATCH = 8;          // Регистр статуса
 const int STATE_CLK   = 9;          // Регистр статуса
 const int PUMP_PIN    = 6;          // Помпа
 
-bool sdEnabled;
-
 // Values
 DateTime now = DateTime(__DATE__, __TIME__);
 DateTime lastWateringDateTime = DateTime(__DATE__, __TIME__);
-int moisture;
-byte state = 0; // 00000000 000000 RTCCheck RTCEnabled
+int moisture0;
+int moisture1;
+byte state = 0; // 00000000 000 (16)Sensor1 (8)Sensor0 (4)SDEnabled (2)RTCCheck (1)RTCEnabled
 
 // Files
 File logFile;
@@ -49,16 +47,16 @@ void setup() {
   setPinsModes();
   initModules();
   setLastWateringDateTime();
-  showStartState();
 }
 
 
 void loop() {
   now = getNow();
   TimeSpan minWateringDistance = getMinWateringDistance();
-  moisture = readSensor(SENSOR_0);
+  moisture0 = readSensor(SENSOR_0);
+  moisture1 = readSensor(SENSOR_1);
 
-  if (now - minWateringDistance >= lastWateringDateTime && moisture <= MOISTURE_MIN) {
+  if (now - minWateringDistance >= lastWateringDateTime && (moisture0+moisture1)/2 <= MOISTURE_MIN) {
     watering();
     updateLastWateringDateTime();
   }
@@ -144,7 +142,31 @@ void initSD() {
 
 
 void initSensors() {
+  lcd.setCursor(0, 0);
+  lcd.print("Initializing sensors.");
+  lcd.setCursor(0, 1);
+  lcd.print("Sleep 50 ");
   delay(50);  // Ожидание стабилизации генератора импульсов датчика
+  lcd.print("OK");
+  lcd.setCursor(0, 2);
+  lcd.print("Sensors: ");
+
+  int sensorVal = analogRead(SENSOR_0);
+  if (sensorVal < SENSOR_MIN || sensorVal > SENSOR_MAX) {
+    lcd.print("BAD ");
+    state = state | 8;
+  } else {
+    lcd.print(" OK ");
+  }
+  sensorVal = analogRead(SENSOR_1);
+  if (sensorVal < SENSOR_MIN || sensorVal > SENSOR_MAX) {
+    lcd.print("BAD ");
+    state = state | 16;
+  } else {
+    lcd.print(" OK ");
+  }
+  delay(2000);
+  lcd.clear();
 }
 
 
@@ -169,20 +191,6 @@ DateTime getNow() {
     now = rtc.now();
   }
   return now;
-}
-
-
-void showStartState() {
-  lcd.setCursor(0, 0);
-  lcd.print("   Auto watering    ");
-  lcd.setCursor(0, 3);
-  lcd.print("Sensors: ");
-  lcd.print(analogRead(SENSOR_0));
-  lcd.print(' ');
-  lcd.print(analogRead(SENSOR_1));
-  delay(10000);
-  lcd.setCursor(0, 2);
-  lcd.print("                    ");
 }
 
 
@@ -234,11 +242,25 @@ void showLastWateringDateTime() {
 
 void showMoisture() {
   lcd.setCursor(0, 1);
-  lcd.print("Moisture:      ");
-  if (moisture < 100) lcd.print(' ');
-  if (moisture < 10)  lcd.print(' ');
-  lcd.print(moisture);
-  lcd.print(" %");
+  lcd.print("Moisture: ");
+  
+  if (! bool(state & 16)) {
+    if (moisture1 < 100) lcd.print(' ');
+    if (moisture1 < 10)  lcd.print(' ');
+    lcd.print(moisture1);
+    lcd.print("%");
+  } else {
+    lcd.print("BAD  ");
+  }
+
+  if (! bool(state & 8)) {
+    if (moisture0 < 100) lcd.print(' ');
+    if (moisture0 < 10)  lcd.print(' ');
+    lcd.print(moisture0);
+    lcd.print("% ");
+  } else {
+    lcd.print("BAD");
+  }
 }
 
 
@@ -317,7 +339,7 @@ TimeSpan getMinWateringDistance() {
 
 int readSensor(int pin) {
   int value = analogRead(pin);
-  value = map(value, SENSOR_MIN, SENSOR_MAX, 0, 100);
+  value = map(value, SENSOR_MIN, SENSOR_MAX, 100, 0);
   value = constrain(value, 0, 100);
   return value;
 }
