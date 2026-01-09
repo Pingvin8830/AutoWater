@@ -129,16 +129,17 @@ void initRTC() {
 
 
 void initSD() {
-  sdEnabled = SD.begin(CS_SD_PIN);
-  if (! sdEnabled) {
-    if (DEBUG) {
-      Serial.println("Could not find SD-card");
-    }
+  lcd.setCursor(0, 0);
+  lcd.print("Initializing SD: ");
+  lcd.setCursor(0, 1);
+  state = state | ! int(SD.begin(CS_SD_PIN))*4;
+  if (state & 4) {
+    lcd.print("BAD");
   } else {
-    if (DEBUG) {
-      Serial.println("SD-card was find and initialized");
-    }
+    lcd.print("OK");
   }
+  delay(2000);
+  lcd.clear();
 }
 
 
@@ -174,13 +175,6 @@ DateTime getNow() {
 void showStartState() {
   lcd.setCursor(0, 0);
   lcd.print("   Auto watering    ");
-  lcd.setCursor(0, 2);
-  lcd.print("SD card: ");
-  if (sdEnabled) {
-    lcd.print("OK");
-  } else {
-    lcd.print("BAD");
-  }
   lcd.setCursor(0, 3);
   lcd.print("Sensors: ");
   lcd.print(analogRead(SENSOR_0));
@@ -263,7 +257,7 @@ void showState() {
 
 
 void setLastWateringDateTime() {
-  if (sdEnabled) {
+  if (! state & 4) {
     lastWateringFile = SD.open(LAST_WATERING_FILENAME);
     if (lastWateringFile) {
       if (lastWateringFile.available() > 0) {
@@ -282,7 +276,6 @@ void setLastWateringDateTime() {
           Serial.print(minute); Serial.print(':');
           Serial.print(second);
         }
-
         lastWateringDateTime = DateTime(year, month, day, hour, minute, second);
       }
     }
