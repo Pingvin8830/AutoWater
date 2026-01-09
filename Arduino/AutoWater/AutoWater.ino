@@ -56,7 +56,7 @@ void loop() {
   now = getNow();
   TimeSpan minWateringDistance = getMinWateringDistance();
   readSensors();
-  writeMoistures();
+  if (now.minute() == 0) writeMoistures();
 
   if (now - minWateringDistance >= lastWateringDateTime && (moisture0+moisture1)/2 <= MOISTURE_MIN) {
     watering();
@@ -295,6 +295,8 @@ void setLastWateringDateTime() {
         int second = lastWateringFile.parseInt();
         lastWateringDateTime = DateTime(year, month, day, hour, minute, second);
       }
+    } else {
+      state = state | 8;
     }
   }
 }
@@ -312,6 +314,8 @@ void updateLastWateringDateTime() {
     lastWateringFile.print(lastWateringDateTime.minute()); lastWateringFile.print(':');
     lastWateringFile.println(lastWateringDateTime.second());
     lastWateringFile.close();
+  } else {
+    state = state | 8;
   }
 }
 
@@ -358,5 +362,29 @@ void watering() {
 
 
 void writeMoistures() {
-  
+  if (! bool(state & 4)) {
+    valuesFile = SD.open(VALUES_FILENAME, FILE_WRITE);
+    if (valuesFile) {
+      valuesFile.print("Date: "); valuesFile.print(now.year()); valuesFile.print('.'); valuesFile.print(now.month()); valuesFile.print('.'); valuesFile.print(now.day()); valuesFile.print("; ");
+      valuesFile.print("Time: "); valuesFile.print(now.hour()); valuesFile.print(':'); valuesFile.print(now.minute()); valuesFile.print(':'); valuesFile.print(now.second()); valuesFile.print("; ");
+      valuesFile.print("Sensor0: "); valuesFile.print(sensor0); valuesFile.print("; ");
+      valuesFile.print("Sensor1: "); valuesFile.print(sensor1); valuesFile.print("; ");
+      valuesFile.print("Moisture0: ");
+      if (sensor0 < SENSOR_MIN || sensor0 > SENSOR_MAX) {
+        valuesFile.print("BAD");
+      } else {
+        valuesFile.print(moisture0);
+      }
+      valuesFile.print("; ");
+      if (sensor1 < SENSOR_MIN || sensor1 > SENSOR_MAX) {
+        valuesFile.print("BAD");
+      } else {
+        valuesFile.print(moisture1);
+      }
+      valuesFile.print("; ");
+      valuesFile.close();
+    } else {
+      state = state | 8;
+    }
+  }
 }
