@@ -56,7 +56,7 @@ void loop() {
   now = getNow();
   TimeSpan minWateringDistance = getMinWateringDistance();
   readSensors();
-  if (now.minute() == 0) writeMoistures();
+  if (now.minute() == 0 && now.second() == 0) writeMoistures();
 
   if (now - minWateringDistance >= lastWateringDateTime && (moisture0+moisture1)/2 <= MOISTURE_MIN) {
     watering();
