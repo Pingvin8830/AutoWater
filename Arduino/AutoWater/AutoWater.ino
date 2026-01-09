@@ -11,7 +11,7 @@ const String LOG_FILENAME           = "main.log";
 
 // Sensor limits
 const int SENSOR_MIN                = 338;
-const int SENSOR_MAX                = 503;
+const int SENSOR_MAX                = 508;
 const int MOISTURE_MIN              = 10; // percents
 
 // Libs
@@ -33,9 +33,11 @@ const int PUMP_PIN    = 6;          // Помпа
 // Values
 DateTime now = DateTime(__DATE__, __TIME__);
 DateTime lastWateringDateTime = DateTime(__DATE__, __TIME__);
+int sensor0;
+int sensor1;
 int moisture0;
 int moisture1;
-byte state = 0; // 00000000 000 (16)Sensor1 (8)Sensor0 (4)SDEnabled (2)RTCCheck (1)RTCEnabled
+byte state = 0; // 00000000 00 (32)Sensor1 (16)Sensor0 (8)SDError (4)SDEnabled (2)RTCCheck (1)RTCEnabled
 
 // Files
 File logFile;
@@ -53,8 +55,8 @@ void setup() {
 void loop() {
   now = getNow();
   TimeSpan minWateringDistance = getMinWateringDistance();
-  moisture0 = readSensor(SENSOR_0);
-  moisture1 = readSensor(SENSOR_1);
+  readSensors();
+  writeMoistures();
 
   if (now - minWateringDistance >= lastWateringDateTime && (moisture0+moisture1)/2 <= MOISTURE_MIN) {
     watering();
@@ -84,7 +86,6 @@ void initModules() {
   initSD();
   initRTC();
   initSensors();
-  initState();
   initPump();
 }
 
@@ -151,31 +152,29 @@ void initSensors() {
   lcd.setCursor(0, 2);
   lcd.print("Sensors: ");
 
-  int sensorVal = analogRead(SENSOR_0);
-  if (sensorVal < SENSOR_MIN || sensorVal > SENSOR_MAX) {
+  sensor1 = analogRead(SENSOR_1);
+  if (sensor1 < SENSOR_MIN || sensor1 > SENSOR_MAX) {
     lcd.print("BAD ");
-    state = state | 8;
+    state = state | 32;
   } else {
     lcd.print(" OK ");
   }
-  sensorVal = analogRead(SENSOR_1);
-  if (sensorVal < SENSOR_MIN || sensorVal > SENSOR_MAX) {
+  sensor0 = analogRead(SENSOR_0);
+  if (sensor0 < SENSOR_MIN || sensor0 > SENSOR_MAX) {
     lcd.print("BAD ");
     state = state | 16;
   } else {
     lcd.print(" OK ");
   }
+
+  lcd.setCursor(0, 3);
+  lcd.print("Sensors raw: ");
+  lcd.print(sensor1);
+  lcd.print(' ');
+  lcd.print(sensor0);
+
   delay(2000);
   lcd.clear();
-}
-
-
-void initState() {
-  digitalWrite(STATE_LATCH, LOW);
-  shiftOut(STATE_SER, STATE_CLK, MSBFIRST, 0);
-  digitalWrite(STATE_LATCH, HIGH);
-  delay(10);
-  digitalWrite(STATE_LATCH, LOW);
 }
 
 
@@ -244,7 +243,7 @@ void showMoisture() {
   lcd.setCursor(0, 1);
   lcd.print("Moisture: ");
   
-  if (! bool(state & 16)) {
+  if (! bool(state & 32)) {
     if (moisture1 < 100) lcd.print(' ');
     if (moisture1 < 10)  lcd.print(' ');
     lcd.print(moisture1);
@@ -253,13 +252,13 @@ void showMoisture() {
     lcd.print("BAD  ");
   }
 
-  if (! bool(state & 8)) {
+  if (! bool(state & 16)) {
     if (moisture0 < 100) lcd.print(' ');
     if (moisture0 < 10)  lcd.print(' ');
     lcd.print(moisture0);
     lcd.print("% ");
   } else {
-    lcd.print("BAD");
+    lcd.print(" BAD ");
   }
 }
 
@@ -275,6 +274,11 @@ void showState() {
   lcd.print(bool(state & 4));
   lcd.print(bool(state & 2));
   lcd.print(bool(state & 1));
+
+  digitalWrite(STATE_LATCH, LOW);
+  shiftOut(STATE_SER, STATE_CLK, MSBFIRST, state);
+  digitalWrite(STATE_LATCH, HIGH);
+  digitalWrite(STATE_LATCH, LOW);
 }
 
 
@@ -289,15 +293,6 @@ void setLastWateringDateTime() {
         int hour = lastWateringFile.parseInt();
         int minute = lastWateringFile.parseInt();
         int second = lastWateringFile.parseInt();
-        if (DEBUG) {
-          Serial.print("Last watering datetime: ");
-          Serial.print(day); Serial.print('.');
-          Serial.print(month); Serial.print('.');
-          Serial.print(year); Serial.print(' ');
-          Serial.print(hour); Serial.print(':');
-          Serial.print(minute); Serial.print(':');
-          Serial.print(second);
-        }
         lastWateringDateTime = DateTime(year, month, day, hour, minute, second);
       }
     }
@@ -337,11 +332,21 @@ TimeSpan getMinWateringDistance() {
 }
 
 
-int readSensor(int pin) {
-  int value = analogRead(pin);
-  value = map(value, SENSOR_MIN, SENSOR_MAX, 100, 0);
-  value = constrain(value, 0, 100);
-  return value;
+void readSensors() {
+  sensor0 = analogRead(SENSOR_0);
+  sensor1 = analogRead(SENSOR_1);
+  if (sensor0 < SENSOR_MIN || sensor0 > SENSOR_MAX) {
+    state = state | 16;
+  } else {
+    moisture0 = map(sensor0, SENSOR_MIN, SENSOR_MAX, 100, 0);
+    moisture0 = constrain(moisture0, 0, 100);
+  }
+  if (sensor1 < SENSOR_MIN || sensor1 > SENSOR_MAX) {
+    state = state | 32;
+  } else {
+    moisture1 = map(sensor1, SENSOR_MIN, SENSOR_MAX, 100, 0);
+    moisture1 = constrain(moisture1, 0, 100);
+  }
 }
 
 
@@ -349,4 +354,9 @@ void watering() {
   digitalWrite(PUMP_PIN, HIGH);
   delay(1000);
   digitalWrite(PUMP_PIN, LOW);
+}
+
+
+void writeMoistures() {
+  
 }
