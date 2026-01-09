@@ -1,38 +1,18 @@
 /*
   Система автополива Виктора Генадиевича
-
-  Подключения:
-  Nano SDA  - A4
-  Nano SCL  - A5
-  Nano MISO - D12
-  Nano MOSI - D11
-  Nano SCK  - D13
-  Nano CS   - D10
-
-  RTC SDA - A4
-  RTC SCL - A5
-
-  SD MISO - D12
-  SD MOSI - D11
-  SD SCK  - D13
-  SD CS   - D10
-
-  LCD SDA - A4
-  LCD CSL - A5
-
-  Sensor - A0
 */
 
-const bool DEBUG = false;
+const bool DEBUG = true;
 
 // File names
 const String LAST_WATERING_FILENAME = "lastwtr.txt";
 const String VALUES_FILENAME        = "values.log";
 const String LOG_FILENAME           = "main.log";
 
-// Sensor RAW limits
+// Sensor limits
 const int SENSOR_MIN                = 503;
-const int SENSOR_MAX                = 331;
+const int SENSOR_MAX                = 338;
+const int MOISTURE_MIN              = 10; // percents
 
 // Libs
 #include "RTClib.h"             // Библиотека часов реального времени
@@ -48,6 +28,7 @@ const int SENSOR_1 = A1;            // Сенсор влажности почв�
 const int STATE_SER   = 7;          // Регистр статуса
 const int STATE_LATCH = 8;          // Регистр статуса
 const int STATE_CLK   = 9;          // Регистр статуса
+const int PUMP_PIN    = 6;          // Помпа
 
 bool rtcEnabled;
 bool sdEnabled;
@@ -78,13 +59,14 @@ void loop() {
   moisture = readSensor(SENSOR_0);
 
 
-  if (now - minWateringDistance >= lastWateringDateTime) {
+  if (now - minWateringDistance >= lastWateringDateTime && moisture <= MOISTURE_MIN) {
+    watering();
     updateLastWateringDateTime();
   }
 
-  showNow();
   showLastWateringDateTime();
   showMoisture();
+  showNow();
 }
 
 
@@ -93,15 +75,23 @@ void setPinsModes() {
   pinMode(STATE_SER, OUTPUT);
   pinMode(STATE_LATCH, OUTPUT);
   pinMode(STATE_CLK, OUTPUT);
+  pinMode(PUMP_PIN, OUTPUT);
 }
 
 
 void initModules() {
-  initRTC();
-  initSD();
   initLCD();
+  initSD();
+  initRTC();
   initSensors();
   initState();
+  initPump();
+}
+
+
+void initLCD() {
+  lcd.init();
+  lcd.backlight();
 }
 
 
@@ -139,12 +129,6 @@ void initSD() {
 }
 
 
-void initLCD() {
-  lcd.init();
-  lcd.backlight();
-}
-
-
 void initSensors() {
   delay(50);  // Ожидание стабилизации генератора импульсов датчика
 }
@@ -156,6 +140,11 @@ void initState() {
   digitalWrite(STATE_LATCH, HIGH);
   delay(10);
   digitalWrite(STATE_LATCH, LOW);
+}
+
+
+void initPump() {
+  digitalWrite(PUMP_PIN, LOW);
 }
 
 
@@ -316,6 +305,13 @@ TimeSpan getMinWateringDistance() {
 int readSensor(int pin) {
   int value = analogRead(pin);
   value = map(value, SENSOR_MIN, SENSOR_MAX, 0, 100);
-  //value = constrain(value, 100, 0);
+  value = constrain(value, 0, 100);
   return value;
+}
+
+
+void watering() {
+  digitalWrite(PUMP_PIN, HIGH);
+  delay(1000);
+  digitalWrite(PUMP_PIN, LOW);
 }
