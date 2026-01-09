@@ -30,14 +30,13 @@ const int STATE_LATCH = 8;          // Регистр статуса
 const int STATE_CLK   = 9;          // Регистр статуса
 const int PUMP_PIN    = 6;          // Помпа
 
-bool rtcEnabled;
 bool sdEnabled;
 
 // Values
 DateTime now = DateTime(__DATE__, __TIME__);
 DateTime lastWateringDateTime = DateTime(__DATE__, __TIME__);
 int moisture;
-int state;
+byte state = 0; // 00000000 000000 RTCCheck RTCEnabled
 
 // Files
 File logFile;
@@ -58,7 +57,6 @@ void loop() {
   TimeSpan minWateringDistance = getMinWateringDistance();
   moisture = readSensor(SENSOR_0);
 
-
   if (now - minWateringDistance >= lastWateringDateTime && moisture <= MOISTURE_MIN) {
     watering();
     updateLastWateringDateTime();
@@ -67,6 +65,8 @@ void loop() {
   showLastWateringDateTime();
   showMoisture();
   showNow();
+
+  if (millis() > 86400000) state = state | 2;
 }
 
 
@@ -92,26 +92,38 @@ void initModules() {
 void initLCD() {
   lcd.init();
   lcd.backlight();
+  lcd.setCursor(0, 0);
+  lcd.print("   Auto watering    ");
+  lcd.setCursor(0, 2);
+  lcd.print("Initialize...");
+  delay(5000);
+  lcd.clear();
 }
 
 
 void initRTC() {
-  rtcEnabled = rtc.begin();
-  if (! rtcEnabled) {
-    if (DEBUG) {
-      Serial.println("Could not find RTC");
-    }
-  } else {
-    if (! rtc.isrunning()) {
-      if (DEBUG) {
-        Serial.println("RTC is NOT running, let's set the time!");
-      }
-      rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-    }
-    if (DEBUG) {
-      Serial.println("RTC was find and initialized");
-    }
+  lcd.setCursor(0, 0);
+  lcd.print("Initializing RTC:   ");
+  lcd.setCursor(0, 1);
+  state = state | ! rtc.begin();
+  if (state & 1) {
+    lcd.print("BAD");
+    while (1) delay(10);
   }
+  lcd.print("OK");
+  delay(2000);
+  lcd.setCursor(0, 2);
+  lcd.print("RTC time: ");
+  if (! rtc.isrunning()) {
+    lcd.print("Stopped");
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  } else {
+    lcd.print("Running");
+  }
+  lcd.setCursor(0, 3);
+  lcd.print("RTC running");
+  delay(5000);
+  lcd.clear();
 }
 
 
@@ -149,10 +161,10 @@ void initPump() {
 
 
 DateTime getNow() {
-  if (rtcEnabled) {
-    now = rtc.now();
-  } else {
+  if (state & 1) {
     now = DateTime(__DATE__, __TIME__) + TimeSpan(0, 0, 0, millis()/1000);
+  } else {
+    now = rtc.now();
   }
   return now;
 }
@@ -163,10 +175,10 @@ void showStartState() {
   lcd.print("   Auto watering    ");
   lcd.setCursor(0, 1);
   lcd.print("RTC:     ");
-  if (rtcEnabled) {
-    lcd.print("OK");
-  } else {
+  if (state & 1) {
     lcd.print("BAD");
+  } else {
+    lcd.print("OK");
   }
   lcd.setCursor(0, 2);
   lcd.print("SD card: ");
@@ -288,15 +300,15 @@ void updateLastWateringDateTime() {
 
 TimeSpan getMinWateringDistance() {
   TimeSpan minWateringDistance;
-  if (rtcEnabled) {
+  if (state & 1) {
+    minWateringDistance = TimeSpan(7, 0, 0, 0);
+  } else {
     if (now.month() > 3 && now.month() < 11) {
       minWateringDistance = TimeSpan(7, 0, 0, 0);
     } else {
       minWateringDistance = TimeSpan(30, 0, 0, 0);
     }
     if (DEBUG) minWateringDistance = TimeSpan(0, 0, 2, 0);
-  } else {
-    minWateringDistance = TimeSpan(7, 0, 0, 0);
   }
   return minWateringDistance;
 }
