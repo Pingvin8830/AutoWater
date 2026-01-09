@@ -1,0 +1,27 @@
+# I2C
+Arduino Nano SDA  = A4
+Arduino Nano SCL  = A5
+# SPI
+Arduino Nano MISO = D12
+Arduino Nano MOSI = D11
+Arduino Nano SCK  = D13
+Arduino Nano CS   = D10
+
+RTC SDA -> Arduino Nano A4
+RTC SCL -> Arduino Nano A5
+
+SD MISO -> Arduino Nano D12
+SD MOSI -> Arduino Nano D11
+SD SCK  -> Arduino Nano D13
+SD CS   -> Arduino Nano D10
+
+LCD converter SDA  -> Arduino Nano A4
+LCD converter SCL  -> Arduino Nano A5
+LCD converter MAIN -> LCD
+
+Sensor 0 -> Arduino Nano A0
+Sensor 1 -> Arduino Nano A1
+
+74HC595N SER   -> Arduino Nano D7
+74HC595N SRCLK -> Arduino Nano D9
+74HC595NRCLK   -> Arduino Nano D8
