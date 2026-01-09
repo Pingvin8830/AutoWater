@@ -18,6 +18,7 @@ const int MOISTURE_MIN              = 10; // percents
 #include "RTClib.h"             // Библиотека часов реального времени
 #include <SD.h>                 // Библиотека SD карты памяти
 #include <LiquidCrystal_I2C.h>  // Библиотека ЖКД
+#include <TimerOne.h>           // Прерывания по таймеру
 
 // Modules
 RTC_DS1307 rtc;                     // Часы DS1307. I2C адреса 0x50, 0x68
@@ -64,6 +65,7 @@ void loop() {
 
   showLastWateringDateTime();
   showMoisture();
+  showState();
   showNow();
 
   if (millis() > 86400000) state = state | 2;
@@ -96,7 +98,7 @@ void initLCD() {
   lcd.print("   Auto watering    ");
   lcd.setCursor(0, 2);
   lcd.print("Initialize...");
-  delay(5000);
+  delay(2000);
   lcd.clear();
 }
 
@@ -108,21 +110,20 @@ void initRTC() {
   state = state | ! rtc.begin();
   if (state & 1) {
     lcd.print("BAD");
-    while (1) delay(10);
-  }
-  lcd.print("OK");
-  delay(2000);
-  lcd.setCursor(0, 2);
-  lcd.print("RTC time: ");
-  if (! rtc.isrunning()) {
-    lcd.print("Stopped");
-    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
   } else {
-    lcd.print("Running");
+    lcd.print("OK");
+    lcd.setCursor(0, 2);
+    lcd.print("RTC time: ");
+    if (! rtc.isrunning()) {
+      lcd.print("Stopped");
+      rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+    } else {
+      lcd.print("Running");
+    }
+    lcd.setCursor(0, 3);
+    lcd.print("RTC running");
   }
-  lcd.setCursor(0, 3);
-  lcd.print("RTC running");
-  delay(5000);
+  delay(2000);
   lcd.clear();
 }
 
@@ -173,13 +174,6 @@ DateTime getNow() {
 void showStartState() {
   lcd.setCursor(0, 0);
   lcd.print("   Auto watering    ");
-  lcd.setCursor(0, 1);
-  lcd.print("RTC:     ");
-  if (state & 1) {
-    lcd.print("BAD");
-  } else {
-    lcd.print("OK");
-  }
   lcd.setCursor(0, 2);
   lcd.print("SD card: ");
   if (sdEnabled) {
@@ -251,6 +245,20 @@ void showMoisture() {
   if (moisture < 10)  lcd.print(' ');
   lcd.print(moisture);
   lcd.print(" %");
+}
+
+
+void showState() {
+  lcd.setCursor(0, 2);
+  lcd.print("State:      ");
+  lcd.print(bool(state & 128));
+  lcd.print(bool(state & 64));
+  lcd.print(bool(state & 32));
+  lcd.print(bool(state & 16));
+  lcd.print(bool(state & 8));
+  lcd.print(bool(state & 4));
+  lcd.print(bool(state & 2));
+  lcd.print(bool(state & 1));
 }
 
 
