@@ -2,389 +2,493 @@
   Система автополива Виктора Генадиевича
 */
 
-const bool DEBUG = true;
+#include <LiquidCrystal_I2C.h>
+#include <RTClib.h>
+#include <SD.h>
 
-// File names
-const String LAST_WATERING_FILENAME = "lastwtr.txt";
-const String VALUES_FILENAME        = "values.log";
-const String LOG_FILENAME           = "main.log";
+#include "states.h"
+#include "chars.h"
+#include "positions.h"
+#include "limits.h"
+#include "filenames.h"
+#include "types.h"
+#include "details.h"
 
-// Sensor limits
-const int SENSOR_MIN                = 338;
-const int SENSOR_MAX                = 508;
-const int MOISTURE_MIN              = 10; // percents
+const int SENSORS_COUNT = 2;
 
-// Libs
-#include "RTClib.h"             // Библиотека часов реального времени
-#include <SD.h>                 // Библиотека SD карты памяти
-#include <LiquidCrystal_I2C.h>  // Библиотека ЖКД
+LiquidCrystal_I2C lcd(0x27, 20, 4);
+RTC_DS1307 rtc;
+const byte RTC_CONFIRM_PIN   = 3;
+const byte SD_CS_PIN         = 10;
+const byte SENSORS_PINS[]    = {A0, A1};
+const byte SENSORS_POWER_PIN = 5;
+const byte PUMP_PIN          = 6;
 
-// Modules
-RTC_DS1307 rtc;                     // Часы DS1307. I2C адреса 0x50, 0x68
-const int CS_SD_PIN = 10;           // Контакт Chip Select для SD
-LiquidCrystal_I2C lcd(0x27, 20, 4); // ЖДК
-const int SENSOR_0 = A0;            // Сенсор влажности почвы
-const int SENSOR_1 = A1;            // Сенсор влажности почвы
-const int STATE_SER   = 7;          // Регистр статуса
-const int STATE_LATCH = 8;          // Регистр статуса
-const int STATE_CLK   = 9;          // Регистр статуса
-const int PUMP_PIN    = 6;          // Помпа
+DateTime now            = DateTime(__DATE__, __TIME__);
+DateTime lastRTCCorrect = DateTime(__DATE__, __TIME__);
+DateTime lastWatering   = DateTime(__DATE__, __TIME__);
+DateTime pumpStart      = DateTime(__DATE__, __TIME__);
 
-// Values
-DateTime now = DateTime(__DATE__, __TIME__);
-DateTime lastWateringDateTime = DateTime(__DATE__, __TIME__);
-int sensor0;
-int sensor1;
-int moisture0;
-int moisture1;
-byte state = 0; // 00000000 00 (32)Sensor1 (16)Sensor0 (8)SDError (4)SDEnabled (2)RTCCheck (1)RTCEnabled
+byte nowB[14];
+byte lastWateringB[14];
 
-// Files
-File logFile;
-File valuesFile;
-File lastWateringFile;
+byte state = 0;
+
+int sensorsValues[SENSORS_COUNT];
+bool isMeasured = false;
+byte moistures[SENSORS_COUNT+1];
 
 
 void setup() {
-  setPinsModes();
-  initModules();
-  setLastWateringDateTime();
-}
-
-
-void loop() {
-  now = getNow();
-  TimeSpan minWateringDistance = getMinWateringDistance();
-  readSensors();
-  if (now.minute() == 0 && now.second() == 0) writeMoistures();
-
-  if (now - minWateringDistance >= lastWateringDateTime && (moisture0+moisture1)/2 <= MOISTURE_MIN) {
-    watering();
-    updateLastWateringDateTime();
-  }
-
-  showLastWateringDateTime();
-  showMoisture();
-  showState();
-  showNow();
-
-  if (millis() > 86400000) state = state | 2;
-}
-
-
-void setPinsModes() {
-  pinMode(CS_SD_PIN, OUTPUT);
-  pinMode(STATE_SER, OUTPUT);
-  pinMode(STATE_LATCH, OUTPUT);
-  pinMode(STATE_CLK, OUTPUT);
-  pinMode(PUMP_PIN, OUTPUT);
-}
-
-
-void initModules() {
   initLCD();
-  initSD();
   initRTC();
+  initSD();
+  setLastRTCCorrects();
+  setLastWaterings();
   initSensors();
   initPump();
+
+  writeLog(TYPE_INIT, HARD_ALL, DETAIL_FINISHED);
 }
 
+void loop() {
+  setNows();
+
+  if (bool(state & MASK_RTC_ERR) && ! digitalRead(RTC_CONFIRM_PIN)) updateLastRTCCorrect();
+
+  if (now.minute() == 0 && now.second() == 0) {
+    if (! isMeasured) {
+      measure();
+      isMeasured = true;
+      writeMeasures();
+      updateAverageMoisture();
+    }
+  } else isMeasured = false;
+
+  if (! bool(state & MASK_PUMP_ENABLE) && now >= lastWatering + getWateringTimeSpan((byte)now.month()) && moistures[SENSORS_COUNT] < MOISTURE_MIN) {
+    enablePump();
+  }
+  if (bool(state & MASK_PUMP_ENABLE) && now - PUMP_WORKTIME == pumpStart) {
+    disablePump();
+    updateLastWaterings();
+  }
+
+  updateState();
+
+  flushLCD();
+}
 
 void initLCD() {
   lcd.init();
   lcd.backlight();
-  lcd.setCursor(0, 0);
-  lcd.print("   Auto watering    ");
-  lcd.setCursor(0, 2);
-  lcd.print("Initialize...");
-  delay(2000);
-  lcd.clear();
-}
 
+  lcd.setCursor(0, 0); lcd.print("Watering: dd.mm.YYYY");
+  lcd.setCursor(0, 1); lcd.print("Moistures: xxx% xxx%");
+  lcd.setCursor(0, 2); lcd.print("State:      BBBBBBBB");
+  lcd.setCursor(0, 3); lcd.print("dd.mm.YYYY  HH:MM:SS");
+}
 
 void initRTC() {
-  lcd.setCursor(0, 0);
-  lcd.print("Initializing RTC:   ");
-  lcd.setCursor(0, 1);
-  state = state | ! rtc.begin();
-  if (state & 1) {
-    lcd.print("BAD");
+  pinMode(RTC_CONFIRM_PIN, INPUT_PULLUP);
+  if (! rtc.begin()) {
+    lcd.clear();
+    lcd.print("Error init rtc");
+    stop();
   } else {
-    lcd.print("OK");
-    lcd.setCursor(0, 2);
-    lcd.print("RTC time: ");
     if (! rtc.isrunning()) {
-      lcd.print("Stopped");
       rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-    } else {
-      lcd.print("Running");
+      state = state | MASK_RTC_ERR;
     }
-    lcd.setCursor(0, 3);
-    lcd.print("RTC running");
   }
-  delay(2000);
-  lcd.clear();
 }
-
 
 void initSD() {
-  lcd.setCursor(0, 0);
-  lcd.print("Initializing SD: ");
-  lcd.setCursor(0, 1);
-  state = state | ! int(SD.begin(CS_SD_PIN))*4;
-  if (state & 4) {
-    lcd.print("BAD");
-  } else {
-    lcd.print("OK");
+  pinMode(SD_CS_PIN, OUTPUT);
+  digitalWrite(SD_CS_PIN, LOW);
+  if (! SD.begin(SD_CS_PIN)) {
+    lcd.clear();
+    lcd.print("Error init SD");
+    stop();
   }
-  delay(2000);
-  lcd.clear();
-}
 
+  writeLog(TYPE_INIT, HARD_SD, DETAIL_FINISHED);
+}
 
 void initSensors() {
-  lcd.setCursor(0, 0);
-  lcd.print("Initializing sensors.");
-  lcd.setCursor(0, 1);
-  lcd.print("Sleep 50 ");
-  delay(50);  // Ожидание стабилизации генератора импульсов датчика
-  lcd.print("OK");
-  lcd.setCursor(0, 2);
-  lcd.print("Sensors: ");
-
-  sensor1 = analogRead(SENSOR_1);
-  if (sensor1 < SENSOR_MIN || sensor1 > SENSOR_MAX) {
-    lcd.print("BAD ");
-    state = state | 32;
-  } else {
-    lcd.print(" OK ");
+  pinMode(SENSORS_POWER_PIN, OUTPUT);
+  measure();
+  for (byte i=0; i<SENSORS_COUNT; i++) {
+    if (! isCorrectSensor(i)) {
+      if      (i == 0) state = state | MASK_SENSOR0_ERR;
+      else if (i == 1) state = state | MASK_SENSOR1_ERR;
+    }
   }
-  sensor0 = analogRead(SENSOR_0);
-  if (sensor0 < SENSOR_MIN || sensor0 > SENSOR_MAX) {
-    lcd.print("BAD ");
-    state = state | 16;
-  } else {
-    lcd.print(" OK ");
+  if (bool(state & MASK_SENSOR0_ERR) && bool(state & MASK_SENSOR1_ERR)) {
+    lcd.clear();
+    lcd.print("All sensors is bad");
+
+    writeLog(TYPE_CHECK, HARD_SENSORS, DETAIL_ALL_BAD);
+    stop();
   }
 
-  lcd.setCursor(0, 3);
-  lcd.print("Sensors raw: ");
-  lcd.print(sensor1);
-  lcd.print(' ');
-  lcd.print(sensor0);
-
-  delay(2000);
-  lcd.clear();
+  writeLog(TYPE_INIT, HARD_SENSORS, DETAIL_FINISHED);
 }
-
 
 void initPump() {
+  pinMode(PUMP_PIN, OUTPUT);
   digitalWrite(PUMP_PIN, LOW);
+  state = state & MASK_PUMP_DISABLE;
+
+  writeLog(TYPE_INIT, HARD_PUMP, DETAIL_FINISHED);
 }
 
-
-DateTime getNow() {
-  if (state & 1) {
-    now = DateTime(__DATE__, __TIME__) + TimeSpan(0, 0, 0, millis()/1000);
+void flushLCD() {
+  lcd.setCursor(LCD_POSITION_WATERING[0], LCD_POSITION_WATERING[1]);
+  if (now.second() % 2) {
+    lcd.print(lastWateringB[6]); lcd.print(lastWateringB[7]); lcd.print(DD);
+    lcd.print(lastWateringB[4]); lcd.print(lastWateringB[5]); lcd.print(DD);
+    lcd.print(lastWateringB[0]); lcd.print(lastWateringB[1]); lcd.print(lastWateringB[2]); lcd.print(lastWateringB[3]);
   } else {
-    now = rtc.now();
+    lcd.print(SPACE);
+    lcd.print(lastWateringB[8]); lcd.print(lastWateringB[9]); lcd.print(DT);
+    lcd.print(lastWateringB[10]); lcd.print(lastWateringB[11]); lcd.print(DT);
+    lcd.print(lastWateringB[12]); lcd.print(lastWateringB[13]);
+    lcd.print(SPACE);
   }
-  return now;
-}
 
-
-void showNow() {
-  lcd.setCursor(0, 3);
-  
-  // Show date
-  if (now.day() < 10) lcd.print('0');
-  lcd.print(now.day()); lcd.print('.');
-  if (now.month() < 10) lcd.print('0');
-  lcd.print(now.month()); lcd.print('.');
-  lcd.print(now.year());
-
-  // Empty space
-  lcd.print("  ");
-
-  // Show time
-  if (now.hour() < 10) lcd.print('0');
-  lcd.print(now.hour()); lcd.print(':');
-  if (now.minute() < 10) lcd.print('0');
-  lcd.print(now.minute()); lcd.print(':');
-  if (now.second() < 10) lcd.print('0');
-  lcd.print(now.second());
-}
-
-
-void showLastWateringDateTime() { 
-  lcd.setCursor(0, 0);
-  lcd.print("Watering: ");
-  
-  // Show date
-  if (lastWateringDateTime.day() < 10) lcd.print('0');
-  lcd.print(lastWateringDateTime.day()); lcd.print('.');
-  if (lastWateringDateTime.month() < 10) lcd.print('0');
-  lcd.print(lastWateringDateTime.month()); lcd.print('.');
-  lcd.print(lastWateringDateTime.year());
-
-  if (DEBUG) {
-    lcd.setCursor(10, 0);
-    if (lastWateringDateTime.hour() < 10) lcd.print('0');
-    lcd.print(lastWateringDateTime.hour()); lcd.print(':');
-    if (lastWateringDateTime.minute() < 10) lcd.print('0');
-    lcd.print(lastWateringDateTime.minute()); lcd.print(':');
-    if (lastWateringDateTime.second() < 10) lcd.print('0');
-    lcd.print(lastWateringDateTime.second()); lcd.print("  ");
-  }
-}
-
-
-void showMoisture() {
-  lcd.setCursor(0, 1);
-  lcd.print("Moisture: ");
-  
-  if (! bool(state & 32)) {
-    if (moisture1 < 100) lcd.print(' ');
-    if (moisture1 < 10)  lcd.print(' ');
-    lcd.print(moisture1);
-    lcd.print("%");
+  lcd.setCursor(LCD_POSITION_MOISTURE[0], LCD_POSITION_MOISTURE[1]);
+  if (bool(state & MASK_SENSOR1_ERR)) {
+    lcd.print(DASH); lcd.print(DASH); lcd.print(DASH); lcd.print(SPACE);
   } else {
-    lcd.print("BAD  ");
+    if (moistures[1] < 100) lcd.print(SPACE);
+    if (moistures[1] <  10) lcd.print(SPACE);
+    lcd.print(moistures[1]); lcd.print(PERCENT);
+  }
+  lcd.print(SPACE);
+  if (bool(state & MASK_SENSOR0_ERR)) {
+    lcd.print(DASH); lcd.print(DASH); lcd.print(DASH); lcd.print(SPACE);
+  } else {
+    if (moistures[0] < 100) lcd.print(SPACE);
+    if (moistures[0] <  10) lcd.print(SPACE);
+    lcd.print(moistures[0]); lcd.print(PERCENT);
+  }
+  
+  lcd.setCursor(LCD_POSITION_STATE[0], LCD_POSITION_STATE[1]);
+  lcd.print(bool(state & MASK_PUMP_ENABLE));
+  lcd.print(bool(state & MASK_64));
+  lcd.print(bool(state & MASK_32));
+  lcd.print(bool(state & MASK_SENSOR1_ERR));
+  lcd.print(bool(state & MASK_SENSOR0_ERR));
+  lcd.print(bool(state & MASK_SD_WRITE));
+  lcd.print(bool(state & MASK_SD_READ));
+  lcd.print(bool(state & MASK_RTC_ERR));
+
+  lcd.setCursor(LCD_POSITION_NOW[0], LCD_POSITION_NOW[1]);
+  lcd.print(nowB[6]);  lcd.print(nowB[7]);  lcd.print(DD);                                                              // day
+  lcd.print(nowB[4]);  lcd.print(nowB[5]);  lcd.print(DD);                                                              // month
+  lcd.print(nowB[0]);  lcd.print(nowB[1]);  lcd.print(nowB[2]); lcd.print(nowB[3]); lcd.print(SPACE); lcd.print(SPACE); // year
+  lcd.print(nowB[8]);  lcd.print(nowB[9]);  lcd.print(DT);                                                              // hour
+  lcd.print(nowB[10]); lcd.print(nowB[11]); lcd.print(DT);                                                              // minute
+  lcd.print(nowB[12]); lcd.print(nowB[13]);                                                                             // second
+}
+
+TimeSpan getWateringTimeSpan(byte month) {
+  // REMOVE AFTER TESTINGS
+  return TimeSpan(0, 0, 10, 0);
+  if (month > 3 && month < 11) return TimeSpan(7, 0, 0, 0);
+  else return TimeSpan(30, 0, 0, 0);
+}
+
+void setNows() {
+  now = rtc.now();
+  setDtChars(nowB, &now);
+}
+
+void setLastRTCCorrects() {
+  int t[6];
+  byte i=0;
+  
+  File sdFile = SD.open(RTC_CORRECT_FILENAME);
+  if (! sdFile) {
+    state = state | MASK_SD_READ;
+
+    writeLog(TYPE_INIT, HARD_RTC, DETAIL_ALL_BAD);
+  } else {
+    while (sdFile.available()) {
+      t[i] = sdFile.parseInt();
+      i++;
+    }
+    sdFile.close();    
+    lastRTCCorrect = DateTime(t[0], t[1], t[2], t[3], t[4], t[5]);
   }
 
-  if (! bool(state & 16)) {
-    if (moisture0 < 100) lcd.print(' ');
-    if (moisture0 < 10)  lcd.print(' ');
-    lcd.print(moisture0);
-    lcd.print("% ");
+  writeLog(TYPE_INIT, HARD_RTC, DETAIL_FINISHED);
+}
+
+void setLastWaterings() {
+  int t[6];
+  byte i=0;
+  
+  File sdFile = SD.open(WATERING_FILENAME);
+  if (! sdFile) {
+    state = state | MASK_SD_READ;
+
+    writeLog(TYPE_INIT, HARD_PUMP, DETAIL_ERR_READ_FILE);
   } else {
-    lcd.print(" BAD ");
+    while (sdFile.available()) {
+      t[i] = sdFile.parseInt();
+      i++;
+    }
+    sdFile.close();
+    lastWatering = DateTime(t[0], t[1], t[2], t[3], t[4], t[5]);
+    setDtChars(lastWateringB, &lastWatering);
+  }
+
+  writeLog(TYPE_INIT, HARD_PUMP, DETAIL_FINISHED);
+}
+
+void setDtChars(byte *bA, DateTime *dtP) {
+  DateTime dt = *dtP;
+  int year = dt.year();
+  bA[0] = year / 1000;        // 2026 / 1000 = 2
+  year -= bA[0] * 1000;       // 2026-2*1000 = 26
+  bA[1] = year / 100;         // 26 / 100 = 0
+  year -= bA[1] * 100;        // 26-0*100 = 26
+  bA[2]  = year / 10;         // 26 / 10 = 2
+  bA[3]  = year % 10;         // 26 % 10 = 6
+  bA[4]  = dt.month() / 10;   // 1 / 10 = 0
+  bA[5]  = dt.month() % 10;   // 1 % 10 = 1
+  bA[6]  = dt.day() / 10;     // 12 / 10 = 1
+  bA[7]  = dt.day() % 10;     // 12 % 10 = 2
+  bA[8]  = dt.hour() / 10;    // 11 / 10 = 1
+  bA[9]  = dt.hour() % 10;    // 11 % 10 = 1
+  bA[10] = dt.minute() / 10;  // 43 / 10 = 4
+  bA[11] = dt.minute() % 10;  // 43 % 10 = 3
+  bA[12] = dt.second() / 10;  // 26 / 10 = 2
+  bA[13] = dt.second() % 10;  // 26 % 10 = 6
+}
+
+void updateState() {
+  if (! isCorrectRTC()) {
+    state = state | MASK_RTC_ERR;
+  } else {
+    state = state & MASK_RTC_OK;
+  }
+  for (byte i=0; i<SENSORS_COUNT; i++) {
+    if (! isCorrectSensor(i)) {
+      if      (i == 0) {
+        state = state | MASK_SENSOR0_ERR;
+
+        writeLog(TYPE_CHECK, HARD_SENSOR_0, DETAIL_BAD_VALUE);
+      }
+      else if (i == 1) {
+        state = state | MASK_SENSOR1_ERR;
+
+        writeLog(TYPE_CHECK, HARD_SENSOR_1, DETAIL_BAD_VALUE);
+      }
+    }
+  }
+  if (bool(state & MASK_SENSOR0_ERR) && bool(state & MASK_SENSOR1_ERR)) {
+    lcd.clear();
+    lcd.print("All sensors bad");
+
+    writeLog(TYPE_CHECK, HARD_SENSORS, DETAIL_ALL_BAD);
+    stop();
+  }  
+}
+
+void updateLastRTCCorrect() {
+  lastRTCCorrect = now;
+  SD.remove(RTC_CORRECT_FILENAME);
+  File sdFile = SD.open(RTC_CORRECT_FILENAME, FILE_WRITE);
+  if (! sdFile) {
+    state = state | MASK_SD_WRITE;
+
+    writeLog(TYPE_DOING, HARD_RTC, DETAIL_ERR_WRITE_FILE);
+    return;
+  } else {
+    sdFile.print(nowB[0]);  sdFile.print(nowB[1]);  sdFile.print(nowB[2]); sdFile.print(nowB[3]); sdFile.print(DD);
+    sdFile.print(nowB[4]);  sdFile.print(nowB[5]);  sdFile.print(DD);
+    sdFile.print(nowB[6]);  sdFile.print(nowB[7]);  sdFile.print(SPACE);
+    sdFile.print(nowB[8]);  sdFile.print(nowB[9]);  sdFile.print(DT);
+    sdFile.print(nowB[10]); sdFile.print(nowB[11]); sdFile.print(DT);
+    sdFile.print(nowB[12]); sdFile.print(nowB[13]); sdFile.println();
+    sdFile.close();
+  }
+
+  writeLog(TYPE_DOING, HARD_RTC, DETAIL_CORRECT_UPDATED);
+}
+
+void updateLastWaterings() {
+  lastWatering = now;
+  setDtChars(lastWateringB, &lastWatering);
+
+  SD.remove(WATERING_FILENAME);
+
+  writeLog(TYPE_DOING, HARD_PUMP, DETAIL_FILE_REMOVED);
+  File sdFile = SD.open(WATERING_FILENAME, FILE_WRITE);
+  if (! sdFile) {
+    state = state | MASK_SD_WRITE;
+
+    writeLog(TYPE_DOING, HARD_PUMP, DETAIL_ERR_WRITE_FILE);
+    return;
+  } else {
+    sdFile.print(nowB[0]);  sdFile.print(nowB[1]);  sdFile.print(nowB[2]); sdFile.print(nowB[3]); sdFile.print(DD);
+    sdFile.print(nowB[4]);  sdFile.print(nowB[5]);  sdFile.print(DD);
+    sdFile.print(nowB[6]);  sdFile.print(nowB[7]);  sdFile.print(SPACE);
+    sdFile.print(nowB[8]);  sdFile.print(nowB[9]);  sdFile.print(DT);
+    sdFile.print(nowB[10]); sdFile.print(nowB[11]); sdFile.print(DT);
+    sdFile.print(nowB[12]); sdFile.print(nowB[13]); sdFile.println();
+    sdFile.close();
+  }
+
+  writeLog(TYPE_DOING, HARD_PUMP, DETAIL_WATERING_UPDATED);
+}
+
+void updateAverageMoisture() {
+  if      (bool(state & MASK_SENSOR0_ERR)) moistures[SENSORS_COUNT] = moistures[1];
+  else if (bool(state & MASK_SENSOR1_ERR)) moistures[SENSORS_COUNT] = moistures[0];
+  else moistures[SENSORS_COUNT] = (moistures[0] + moistures[1]) / 2;
+}
+
+void enablePump() {
+  digitalWrite(PUMP_PIN, HIGH);
+  pumpStart = now;
+  state = state | MASK_PUMP_ENABLE;
+
+  writeLog(TYPE_DOING, HARD_PUMP, DETAIL_ENABLED);
+}
+
+void disablePump() {
+  digitalWrite(PUMP_PIN, LOW);
+  state = state & MASK_PUMP_DISABLE;
+
+  writeLog(TYPE_DOING, HARD_PUMP, DETAIL_DISABLED);
+}
+
+bool isCorrectRTC() {
+  if (! rtc.isrunning()) {
+
+    writeLog(TYPE_CHECK, HARD_RTC, DETAIL_STOPPED);
+    return false;  // RTC stopped
+  }
+  if (now < lastRTCCorrect) {
+
+    writeLog(TYPE_CHECK, HARD_RTC, DETAIL_NOW_LESS_CORRECT);
+    return false;  // Now < last correct datetime
+  }
+  if (now > lastRTCCorrect + RTC_ACCURACY) {
+
+    writeLog(TYPE_CHECK, HARD_RTC, DETAIL_ACCURACY_OVERRIDE);
+    return false;  // Override accuracy RTC
+  }
+  return true;
+}
+
+bool isCorrectSensor(byte num) {
+  if (sensorsValues[num] < SENSORS_MIN[num] || sensorsValues[num] > SENSORS_MAX[num]) {
+
+    byte s;
+    if (num == 0) s = HARD_SENSOR_0;
+    else if (num == 1) s = HARD_SENSOR_1;
+    writeLog(TYPE_CHECK, s, DETAIL_BAD_VALUE);
+    return false;
+  }
+  return true;
+}
+
+void measure() {
+  digitalWrite(SENSORS_POWER_PIN, HIGH);
+  delay(500);
+  for (byte i=0; i<SENSORS_COUNT; i++) {
+    sensorsValues[i] = analogRead(SENSORS_PINS[i]);
+    moistures[i] = constrain(map(sensorsValues[i], SENSORS_MIN[i], SENSORS_MAX[i], 100, 0), 0, 100);
+  }
+  digitalWrite(SENSORS_POWER_PIN, LOW);
+
+  writeLog(TYPE_DOING, HARD_SENSORS, DETAIL_MEASURE_COMPLETED);
+}
+
+void writeMeasures() {
+  File sdFile = SD.open(VALUES_FILENAME, FILE_WRITE);
+  if (! sdFile) {
+    state = state | MASK_SD_WRITE;
+
+    writeLog(TYPE_DOING, HARD_SENSORS, DETAIL_ERR_WRITE_FILE);
+  } else {
+    sdFile.print(nowB[0]);  sdFile.print(nowB[1]);  sdFile.print(nowB[2]); sdFile.print(nowB[3]); sdFile.print(DD); // year
+    sdFile.print(nowB[4]);  sdFile.print(nowB[5]);  sdFile.print(DD);                                               // month
+    sdFile.print(nowB[6]);  sdFile.print(nowB[7]);  sdFile.print(SPACE);                                            // day
+    sdFile.print(nowB[8]);  sdFile.print(nowB[9]);  sdFile.print(DT);                                               // hour
+    sdFile.print(nowB[10]); sdFile.print(nowB[11]); sdFile.print(DT);                                               // minute
+    sdFile.print(nowB[12]); sdFile.print(nowB[13]); sdFile.print(SPACE);                                            // second
+    sdFile.print(SPACE); sdFile.print(SPACE);
+    for (byte i=0; i<SENSORS_COUNT; i++) {
+      sdFile.print(sensorsValues[i]); sdFile.print(SPACE); sdFile.print(SPACE);
+      sdFile.print(moistures[i]); sdFile.print(SPACE); sdFile.print(SPACE);
+    }
+    sdFile.print(moistures[SENSORS_COUNT]); sdFile.print(SPACE); sdFile.print(SPACE);
+    sdFile.print(bool(state & MASK_PUMP_ENABLE));
+    sdFile.print(bool(state & MASK_64));
+    sdFile.print(bool(state & MASK_32));
+    sdFile.print(bool(state & MASK_SENSOR1_ERR));
+    sdFile.print(bool(state & MASK_SENSOR0_ERR));
+    sdFile.print(bool(state & MASK_SD_WRITE));
+    sdFile.print(bool(state & MASK_SD_READ));
+    sdFile.print(bool(state & MASK_RTC_ERR));
+    sdFile.println();
+    sdFile.close();
+
+    writeLog(TYPE_DOING, HARD_SENSORS, DETAIL_MEASURE_WRITED);
   }
 }
 
+void writeLog(byte type, byte hard, byte detail) {
+  File sdFile = SD.open(LOG_FILENAME, FILE_WRITE);
+  if (! sdFile) {
+    lcd.clear();
+    lcd.print("Err open log file to write");
+    while (true) delay(1000);
+  } else {
+    // DateTime
+    sdFile.print(nowB[0]);  sdFile.print(nowB[1]);  sdFile.print(nowB[2]); sdFile.print(nowB[3]); sdFile.print(DD);
+    sdFile.print(nowB[4]);  sdFile.print(nowB[5]);  sdFile.print(DD);
+    sdFile.print(nowB[6]);  sdFile.print(nowB[7]);  sdFile.print(SPACE);
+    sdFile.print(nowB[8]);  sdFile.print(nowB[9]);  sdFile.print(DT);
+    sdFile.print(nowB[10]); sdFile.print(nowB[11]); sdFile.print(DT);
+    sdFile.print(nowB[12]); sdFile.print(nowB[13]); sdFile.print(SPACE);
 
-void showState() {
-  lcd.setCursor(0, 2);
-  lcd.print("State:      ");
-  lcd.print(bool(state & 128));
-  lcd.print(bool(state & 64));
-  lcd.print(bool(state & 32));
-  lcd.print(bool(state & 16));
-  lcd.print(bool(state & 8));
-  lcd.print(bool(state & 4));
-  lcd.print(bool(state & 2));
-  lcd.print(bool(state & 1));
+    sdFile.print(type);   sdFile.print(SPACE);
+    sdFile.print(hard);   sdFile.print(SPACE);
+    sdFile.print(detail); sdFile.print(SPACE);
+
+    sdFile.print(bool(state & MASK_PUMP_ENABLE));
+    sdFile.print(bool(state & MASK_64));
+    sdFile.print(bool(state & MASK_32));
+    sdFile.print(bool(state & MASK_SENSOR1_ERR));
+    sdFile.print(bool(state & MASK_SENSOR0_ERR));
+    sdFile.print(bool(state & MASK_SD_WRITE));
+    sdFile.print(bool(state & MASK_SD_READ));
+    sdFile.print(bool(state & MASK_RTC_ERR));
+    
+    sdFile.println();
+    sdFile.close();
+  }
+}
+
+void stop() {
+
+  writeLog(TYPE_ALARM, HARD_ALL, DETAIL_STOP);
+  while (true) delay(1000);
+}
+/*
+// Modules
+const byte STATE_SER_PIN     = 7;   // Регистр статуса
+const byte STATE_LATCH_PIN   = 8;   // Регистр статуса
+const byte STATE_CLK_PIN     = 9;   // Регистр статуса
 
   digitalWrite(STATE_LATCH, LOW);
   shiftOut(STATE_SER, STATE_CLK, MSBFIRST, state);
   digitalWrite(STATE_LATCH, HIGH);
   digitalWrite(STATE_LATCH, LOW);
-}
-
-
-void setLastWateringDateTime() {
-  if (! state & 4) {
-    lastWateringFile = SD.open(LAST_WATERING_FILENAME);
-    if (lastWateringFile) {
-      if (lastWateringFile.available() > 0) {
-        int day = lastWateringFile.parseInt();
-        int month = lastWateringFile.parseInt();
-        int year = lastWateringFile.parseInt();
-        int hour = lastWateringFile.parseInt();
-        int minute = lastWateringFile.parseInt();
-        int second = lastWateringFile.parseInt();
-        lastWateringDateTime = DateTime(year, month, day, hour, minute, second);
-      }
-    } else {
-      state = state | 8;
-    }
-  }
-}
-
-
-void updateLastWateringDateTime() {
-  lastWateringDateTime = now;
-  SD.remove(LAST_WATERING_FILENAME);
-  lastWateringFile = SD.open(LAST_WATERING_FILENAME, FILE_WRITE);
-  if (lastWateringFile) {
-    lastWateringFile.print(lastWateringDateTime.day());    lastWateringFile.print('.');
-    lastWateringFile.print(lastWateringDateTime.month());  lastWateringFile.print('.');
-    lastWateringFile.print(lastWateringDateTime.year());   lastWateringFile.print(' ');
-    lastWateringFile.print(lastWateringDateTime.hour());   lastWateringFile.print(':');
-    lastWateringFile.print(lastWateringDateTime.minute()); lastWateringFile.print(':');
-    lastWateringFile.println(lastWateringDateTime.second());
-    lastWateringFile.close();
-  } else {
-    state = state | 8;
-  }
-}
-
-
-TimeSpan getMinWateringDistance() {
-  TimeSpan minWateringDistance;
-  if (state & 1) {
-    minWateringDistance = TimeSpan(7, 0, 0, 0);
-  } else {
-    if (now.month() > 3 && now.month() < 11) {
-      minWateringDistance = TimeSpan(7, 0, 0, 0);
-    } else {
-      minWateringDistance = TimeSpan(30, 0, 0, 0);
-    }
-    if (DEBUG) minWateringDistance = TimeSpan(0, 0, 2, 0);
-  }
-  return minWateringDistance;
-}
-
-
-void readSensors() {
-  sensor0 = analogRead(SENSOR_0);
-  sensor1 = analogRead(SENSOR_1);
-  if (sensor0 < SENSOR_MIN || sensor0 > SENSOR_MAX) {
-    state = state | 16;
-  } else {
-    moisture0 = map(sensor0, SENSOR_MIN, SENSOR_MAX, 100, 0);
-    moisture0 = constrain(moisture0, 0, 100);
-  }
-  if (sensor1 < SENSOR_MIN || sensor1 > SENSOR_MAX) {
-    state = state | 32;
-  } else {
-    moisture1 = map(sensor1, SENSOR_MIN, SENSOR_MAX, 100, 0);
-    moisture1 = constrain(moisture1, 0, 100);
-  }
-}
-
-
-void watering() {
-  digitalWrite(PUMP_PIN, HIGH);
-  delay(1000);
-  digitalWrite(PUMP_PIN, LOW);
-}
-
-
-void writeMoistures() {
-  if (! bool(state & 4)) {
-    valuesFile = SD.open(VALUES_FILENAME, FILE_WRITE);
-    if (valuesFile) {
-      valuesFile.print("Date: "); valuesFile.print(now.year()); valuesFile.print('.'); valuesFile.print(now.month()); valuesFile.print('.'); valuesFile.print(now.day()); valuesFile.print("; ");
-      valuesFile.print("Time: "); valuesFile.print(now.hour()); valuesFile.print(':'); valuesFile.print(now.minute()); valuesFile.print(':'); valuesFile.print(now.second()); valuesFile.print("; ");
-      valuesFile.print("Sensor0: "); valuesFile.print(sensor0); valuesFile.print("; ");
-      valuesFile.print("Sensor1: "); valuesFile.print(sensor1); valuesFile.print("; ");
-      valuesFile.print("Moisture0: ");
-      if (sensor0 < SENSOR_MIN || sensor0 > SENSOR_MAX) {
-        valuesFile.print("BAD");
-      } else {
-        valuesFile.print(moisture0);
-      }
-      valuesFile.print("; ");
-      if (sensor1 < SENSOR_MIN || sensor1 > SENSOR_MAX) {
-        valuesFile.print("BAD");
-      } else {
-        valuesFile.print(moisture1);
-      }
-      valuesFile.print("; ");
-      valuesFile.close();
-    } else {
-      state = state | 8;
-    }
-  }
-}
+*/
