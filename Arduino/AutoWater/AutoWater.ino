@@ -2,7 +2,6 @@
   Система автополива Виктора Генадиевича
 
   Планы:
-  - сдвиговый регистр (статус)
   - кнопки подстройки времени/управления
   - ребут?
   - имена логов?
@@ -23,6 +22,7 @@
 #include "limits.h"
 #include "filenames.h"
 #include "types.h"
+#include "hards.h"
 #include "details.h"
 
 const int SENSORS_COUNT = 2;
@@ -34,6 +34,9 @@ const byte SD_CS_PIN         = 10;
 const byte SENSORS_PINS[]    = {A0, A1};
 const byte SENSORS_POWER_PIN = 5;
 const byte PUMP_PIN          = 6;
+const byte STATE_SER_PIN     = 7;
+const byte STATE_LATCH_PIN   = 8;
+const byte STATE_CLK_PIN     = 9;
 
 DateTime now            = DateTime(__DATE__, __TIME__);
 DateTime lastRTCCorrect = DateTime(__DATE__, __TIME__);
@@ -58,6 +61,7 @@ void setup() {
   setLastWaterings();
   initSensors();
   initPump();
+  initState();
 
   writeLog(TYPE_INIT, HARD_ALL, DETAIL_FINISHED);
 }
@@ -151,6 +155,16 @@ void initPump() {
   state = state & MASK_PUMP_DISABLE;
 
   writeLog(TYPE_INIT, HARD_PUMP, DETAIL_FINISHED);
+}
+
+void initState() {
+  pinMode(STATE_SER_PIN,   OUTPUT);
+  pinMode(STATE_LATCH_PIN, OUTPUT);
+  pinMode(STATE_CLK_PIN,   OUTPUT);
+  digitalWrite(STATE_SER_PIN,   LOW);
+  digitalWrite(STATE_LATCH_PIN, LOW);
+  digitalWrite(STATE_CLK_PIN,   LOW);
+  writeLog(0, 7, 0);
 }
 
 void flushLCD() {
@@ -299,6 +313,10 @@ void updateState() {
       }
     }
   }
+  digitalWrite(STATE_LATCH_PIN, LOW);
+  shiftOut(STATE_SER_PIN, STATE_CLK_PIN, MSBFIRST, state);
+  digitalWrite(STATE_LATCH_PIN, HIGH);
+  digitalWrite(STATE_LATCH_PIN, LOW);
   if (bool(state & MASK_SENSOR0_ERR) && bool(state & MASK_SENSOR1_ERR)) {
     lcd.clear();
     lcd.print("All sensors bad");
@@ -492,14 +510,3 @@ void stop() {
   writeLog(TYPE_ALARM, HARD_ALL, DETAIL_STOP);
   while (true) delay(1000);
 }
-/*
-// Modules
-const byte STATE_SER_PIN     = 7;   // Регистр статуса
-const byte STATE_LATCH_PIN   = 8;   // Регистр статуса
-const byte STATE_CLK_PIN     = 9;   // Регистр статуса
-
-  digitalWrite(STATE_LATCH, LOW);
-  shiftOut(STATE_SER, STATE_CLK, MSBFIRST, state);
-  digitalWrite(STATE_LATCH, HIGH);
-  digitalWrite(STATE_LATCH, LOW);
-*/

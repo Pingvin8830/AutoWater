@@ -19,13 +19,14 @@ DETAILS = (
     "Stop                      "
 )
 CODES = (
-    "All     ",
-    "SD      ",
-    "Sensors ",
-    "Pump    ",
-    "Rtc     ",
-    "Sensor 0",
-    "Sensor 1"
+    "All           ",
+    "SD            ",
+    "Sensors       ",
+    "Pump          ",
+    "Rtc           ",
+    "Sensor 0      ",
+    "Sensor 1      ",
+    "State register",
 )
 STATE_CODES = (
     "RTC_ERR    ",
