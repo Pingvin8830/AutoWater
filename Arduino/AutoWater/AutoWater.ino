@@ -4,7 +4,6 @@
   Планы:
   - кнопки подстройки времени/управления
   - ребут?
-  - имена логов?
   - корпус
   - плата
   - check SD files
@@ -29,14 +28,14 @@ const int SENSORS_COUNT = 2;
 
 LiquidCrystal_I2C lcd(0x27, 20, 4);
 RTC_DS1307 rtc;
-const byte RTC_CONFIRM_PIN   = 3;
+const byte RTC_CONFIRM_PIN   = 3; // 7
 const byte SD_CS_PIN         = 10;
 const byte SENSORS_PINS[]    = {A0, A1};
-const byte SENSORS_POWER_PIN = 5;
-const byte PUMP_PIN          = 6;
-const byte STATE_SER_PIN     = 7;
-const byte STATE_LATCH_PIN   = 8;
-const byte STATE_CLK_PIN     = 9;
+const byte SENSORS_POWER_PIN = 5; // 9
+const byte PUMP_PIN          = 6; // 2
+const byte STATE_SER_PIN     = 7; // 3
+const byte STATE_LATCH_PIN   = 8; // 5
+const byte STATE_CLK_PIN     = 9; // 4
 
 DateTime now            = DateTime(__DATE__, __TIME__);
 DateTime lastRTCCorrect = DateTime(__DATE__, __TIME__);
@@ -51,6 +50,8 @@ byte state = 0;
 int sensorsValues[SENSORS_COUNT];
 bool isMeasured = false;
 byte moistures[SENSORS_COUNT+1];
+
+String fileName = "unknown.";
 
 
 void setup() {
@@ -67,7 +68,14 @@ void setup() {
 }
 
 void loop() {
+  uint32_t loopStart = millis();
+
   setNows();
+  fileName = "";
+  fileName += nowB[0]; fileName += nowB[1]; fileName += nowB[2]; fileName += nowB[3];
+  fileName += nowB[4]; fileName += nowB[5];
+  fileName += nowB[6]; fileName += nowB[7];
+  fileName += DD;
 
   if (bool(state & MASK_RTC_ERR) && ! digitalRead(RTC_CONFIRM_PIN)) updateLastRTCCorrect();
 
@@ -91,6 +99,8 @@ void loop() {
   updateState();
 
   flushLCD();
+
+  while (millis() - loopStart < 1000) delay(1);
 }
 
 void initLCD() {
@@ -439,7 +449,7 @@ void measure() {
 }
 
 void writeMeasures() {
-  File sdFile = SD.open(VALUES_FILENAME, FILE_WRITE);
+  File sdFile = SD.open(fileName + "vls", FILE_WRITE);
   if (! sdFile) {
     state = state | MASK_SD_WRITE;
 
@@ -473,7 +483,7 @@ void writeMeasures() {
 }
 
 void writeLog(byte type, byte hard, byte detail) {
-  File sdFile = SD.open(LOG_FILENAME, FILE_WRITE);
+  File sdFile = SD.open(fileName + "log", FILE_WRITE);
   if (! sdFile) {
     lcd.clear();
     lcd.print("Err open log file to write");
