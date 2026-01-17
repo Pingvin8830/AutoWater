@@ -6544,7 +6544,7 @@
 		(dnp no)
 		(uuid "007d58cf-5f65-420e-9326-05292971245a")
 		(property "Reference" "R3"
-			(at 130.81 73.66 0)
+			(at 130.81 71.755 0)
 			(do_not_autoplace yes)
 			(effects
 				(font
@@ -6552,13 +6552,12 @@
 				)
 			)
 		)
-		(property "Value" "Resistor"
+		(property "Value" "150R"
 			(at 130.81 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -6613,7 +6612,7 @@
 		(dnp no)
 		(uuid "0184e3a8-42ce-4618-9295-7caf73de4138")
 		(property "Reference" "R6"
-			(at 130.81 88.9 0)
+			(at 130.81 86.995 0)
 			(do_not_autoplace yes)
 			(effects
 				(font
@@ -6621,13 +6620,12 @@
 				)
 			)
 		)
-		(property "Value" "Resistor"
+		(property "Value" "150R"
 			(at 130.81 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -7157,7 +7155,7 @@
 		(dnp no)
 		(uuid "2055b3f8-f501-4cff-ab53-55b792213f9f")
 		(property "Reference" "R8"
-			(at 130.81 99.06 0)
+			(at 130.81 97.155 0)
 			(do_not_autoplace yes)
 			(effects
 				(font
@@ -7165,13 +7163,12 @@
 				)
 			)
 		)
-		(property "Value" "Resistor"
+		(property "Value" "150R"
 			(at 130.81 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -7445,7 +7442,7 @@
 		(dnp no)
 		(uuid "297782ac-9650-4ba9-9217-bbbd688ecb2e")
 		(property "Reference" "R2"
-			(at 130.81 68.58 0)
+			(at 130.81 66.675 0)
 			(do_not_autoplace yes)
 			(effects
 				(font
@@ -7453,13 +7450,12 @@
 				)
 			)
 		)
-		(property "Value" "Resistor"
+		(property "Value" "150R"
 			(at 130.81 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -7752,14 +7748,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Capacitor"
+		(property "Value" "10 mkF"
 			(at 33.655 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -8147,8 +8142,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Battery_Cell"
-			(at 267.335 37.465 0)
+		(property "Value" "CR2032"
+			(at 271.78 37.465 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8790,14 +8785,13 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Capacitor"
+		(property "Value" "10 mkF"
 			(at 48.895 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -9100,7 +9094,7 @@
 		(dnp no)
 		(uuid "b625626d-73fa-4afc-9d31-65faaabf39d1")
 		(property "Reference" "R5"
-			(at 130.81 83.82 0)
+			(at 130.81 81.915 0)
 			(do_not_autoplace yes)
 			(effects
 				(font
@@ -9108,13 +9102,12 @@
 				)
 			)
 		)
-		(property "Value" "Resistor"
+		(property "Value" "150R"
 			(at 130.81 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -9410,7 +9403,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "Crystal"
+		(property "Value" "32.768kHz"
 			(at 272.415 48.26 90)
 			(effects
 				(font
@@ -9471,7 +9464,7 @@
 		(dnp no)
 		(uuid "ca1de54d-e31a-40d5-9f5d-63752f9ed91a")
 		(property "Reference" "R9"
-			(at 130.81 104.14 0)
+			(at 130.81 102.235 0)
 			(do_not_autoplace yes)
 			(effects
 				(font
@@ -9479,13 +9472,12 @@
 				)
 			)
 		)
-		(property "Value" "Resistor"
+		(property "Value" "150R"
 			(at 130.81 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -9720,7 +9712,7 @@
 		(dnp no)
 		(uuid "e0cc1d33-3ea3-4f74-a03c-72f0892221ff")
 		(property "Reference" "R4"
-			(at 130.81 78.74 0)
+			(at 130.81 76.835 0)
 			(do_not_autoplace yes)
 			(effects
 				(font
@@ -9728,13 +9720,12 @@
 				)
 			)
 		)
-		(property "Value" "Resistor"
+		(property "Value" "150R"
 			(at 130.81 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -9789,7 +9780,7 @@
 		(dnp no)
 		(uuid "e69c2676-4959-483c-b8da-e8d7fe671dfb")
 		(property "Reference" "R7"
-			(at 130.81 93.98 0)
+			(at 130.81 92.075 0)
 			(do_not_autoplace yes)
 			(effects
 				(font
@@ -9797,13 +9788,12 @@
 				)
 			)
 		)
-		(property "Value" "Resistor"
+		(property "Value" "150R"
 			(at 130.81 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
