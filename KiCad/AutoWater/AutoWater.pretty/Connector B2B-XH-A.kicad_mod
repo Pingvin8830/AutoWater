@@ -1,0 +1,120 @@
+(footprint "Connector B2B-XH-A"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "connector B2B XH")
+	(property "Reference" "B2B-XH-A"
+		(at 1.27 -2.54 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "722aaf29-96f6-4abe-ad09-5ac2bbc41585")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "B2B-XH-A"
+		(at 1.27 3.81 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "f35a1391-9d52-4a90-a93e-805b2288e000")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://static.chipdip.ru/lib/906/DOC012906835.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "873e477f-2d88-44d7-a17b-c6dbea53e49a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5369ec7d-9e7d-4056-b204-d5da1ac3b65e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -2.56 2.46)
+		(end 5.06 -3.51)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "0cd2c68f-d865-46bb-ba5c-e84eb57425e2")
+	)
+	(fp_rect
+		(start -2.7 2.6)
+		(end 5.2 -3.65)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "c03d73ea-e66b-4e45-a342-826914c97dcb")
+	)
+	(fp_rect
+		(start -2.45 2.35)
+		(end 4.95 -3.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "a5ea128b-29ff-4cb6-b4e8-f6ccd0b68fc0")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 1.27 6.35 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "abd75821-a6d5-4332-b17e-2192c5ee9140")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "GND" thru_hole circle
+		(at 2.5 0)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "c71725ad-6997-46f6-95a0-b1577749a407")
+	)
+	(pad "VCC" thru_hole rect
+		(at 0 0)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6eb7c803-f900-4ab0-8c34-abc8e4dce2b8")
+	)
+	(embedded_fonts no)
+)

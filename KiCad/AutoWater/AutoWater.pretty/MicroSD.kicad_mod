@@ -1,0 +1,142 @@
+(footprint "MicroSD"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "sd microsd")
+	(property "Reference" "SD"
+		(at 3.81 -6.35 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "3051f02c-c911-4a6a-9afe-392f4204624d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "MicroSD"
+		(at 3.81 -2.54 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "9639d901-af83-4181-9676-0a62ee0635bf")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.chipdip.ru/product/tf-004-karta-microsd-tf-karta-1-9mm-semnye-razemy-sofng-8015893122"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "559ff653-2808-4fcf-8901-b03b86ad8496")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "41006683-975f-4c6c-a61e-699d4b1bece8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -0.98 -10.2)
+		(end 8.68 1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "9adc4dc7-d24a-4d43-9b31-a0a47c54e397")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 3.81 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "f6275c43-04cd-47b1-9321-530d7195623f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 0 0)
+		(size 0.8 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "551e49b7-c766-4a72-ad98-aa1824d612a6")
+	)
+	(pad "2" smd rect
+		(at 1.1 0)
+		(size 0.8 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "bf73ba91-e9f5-4cb4-8569-a80020f10b90")
+	)
+	(pad "3" smd rect
+		(at 2.2 0)
+		(size 0.8 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "dd58182a-0abd-4ded-ad28-27ccfa974631")
+	)
+	(pad "4" smd rect
+		(at 3.3 0)
+		(size 0.8 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "b20381d7-5cdb-4f7a-a745-6046fc849f4a")
+	)
+	(pad "5" smd rect
+		(at 4.4 0)
+		(size 0.8 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "4595deee-6e7e-4fd0-8b04-8c92cfec04ac")
+	)
+	(pad "6" smd rect
+		(at 5.5 0)
+		(size 0.8 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "020b3390-c0c9-487f-bce5-fb78195ae9cf")
+	)
+	(pad "7" smd rect
+		(at 6.6 0)
+		(size 0.8 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "fd4630a5-b50f-4ce5-8560-7a682a0e0f2b")
+	)
+	(pad "8" smd rect
+		(at 7.7 0)
+		(size 0.8 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "a010ca6b-de6c-42ab-865e-f177bb408d31")
+	)
+	(pad "9" smd rect
+		(at 6.88 -9.2)
+		(size 3.1 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "3e53d4ea-0767-4d66-85d0-5dd9571553fd")
+	)
+	(pad "10" smd rect
+		(at 0.82 -9.2)
+		(size 3.1 1.5)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c8f7e013-20c0-403f-b683-e2b9b47766ab")
+	)
+	(embedded_fonts no)
+)
