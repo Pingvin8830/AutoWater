@@ -9592,7 +9592,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ds-201-gnezdo-pitaniya-2-1x5-5mm-na-platu-dragon-city-289923115"
 			(at 20.574 35.56 90)
 			(effects
 				(font
