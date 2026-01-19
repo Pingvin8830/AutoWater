@@ -1,4 +1,4 @@
-30068832035472
+40683118646379
 AutoWater
 Arduino Nano V3 Type C PBS
 
@@ -20,6 +20,20 @@ TSSOP-14 smd 74ABT125PW
 0
 14
 14
+AutoWater
+Capacitor Murata SMD 0402
+
+C capacitor smd 0402
+0
+2
+2
+AutoWater
+Capacitor Murata SMD 0603
+
+capacitor c smd 0603
+0
+2
+2
 AutoWater
 Capacity SMD 0603
 
@@ -45,6 +59,13 @@ AutoWater
 Crystal 32768 SMD
 
 crystal 32768 smd
+0
+2
+2
+AutoWater
+DIode 1N4001G THT min
+
+diode 1N4001G tht
 0
 2
 2
@@ -77,6 +98,13 @@ smd npn transistor BC817-25
 3
 3
 AutoWater
+PLS-2
+
+pls connector
+0
+2
+2
+AutoWater
 PLS-3
 
 pls
@@ -105,9 +133,23 @@ register 74HC164M SOP-14 smd
 14
 14
 AutoWater
-Resistor 0805
+Resistor Rohm SMD 0603
 
-res r resistor smd 0805 ERJ-PB6B2201V
+r res resistor smd 0603
+0
+2
+2
+AutoWater
+Resistor Yageo SMD 0805
+
+res r resistor smd 0805
+0
+2
+2
+AutoWater
+Resistor Yageo SMD 1206
+
+r res resistor smd 1206
 0
 2
 2
