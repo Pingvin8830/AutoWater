@@ -108,7 +108,7 @@
 		(remove_unused_layers no)
 		(uuid "c71725ad-6997-46f6-95a0-b1577749a407")
 	)
-	(pad "VCC" thru_hole rect
+	(pad "Vin" thru_hole rect
 		(at 0 0)
 		(size 2 2)
 		(drill 1)

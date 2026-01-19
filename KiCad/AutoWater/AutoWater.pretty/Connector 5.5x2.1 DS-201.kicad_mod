@@ -108,7 +108,7 @@
 		(remove_unused_layers no)
 		(uuid "65384398-2652-4a12-8d6c-b50fd89ca1ae")
 	)
-	(pad "VCC" thru_hole oval
+	(pad "Vout" thru_hole oval
 		(at 6 0)
 		(size 1.3 3.8)
 		(drill oval 0.5 3)

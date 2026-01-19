@@ -100,22 +100,6 @@
 			)
 		)
 	)
-	(pad "3V3" thru_hole circle
-		(at 35.56 -15.22)
-		(size 2.05 2.05)
-		(drill 1.05)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(uuid "077ef2c2-c52a-4dbe-8a8d-e4cb8ac39d16")
-	)
-	(pad "5V" thru_hole circle
-		(at 10.16 -15.22)
-		(size 2.05 2.05)
-		(drill 1.05)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(uuid "b0a7a338-6ad9-4e23-9e77-bad869eff8f9")
-	)
 	(pad "A0" thru_hole circle
 		(at 30.48 -15.22)
 		(size 2.05 2.05)
@@ -300,7 +284,7 @@
 		(remove_unused_layers no)
 		(uuid "184b12f8-3d56-4140-b0eb-26dc5e25a683")
 	)
-	(pad "GL" thru_hole circle
+	(pad "GNDl" thru_hole circle
 		(at 10.16 0)
 		(size 2.05 2.05)
 		(drill 1.05)
@@ -308,7 +292,7 @@
 		(remove_unused_layers no)
 		(uuid "66fcc410-f015-4b1f-967d-81cc3a0570e5")
 	)
-	(pad "GR" thru_hole circle
+	(pad "GNDr" thru_hole circle
 		(at 5.08 -15.22)
 		(size 2.05 2.05)
 		(drill 1.05)
@@ -332,7 +316,7 @@
 		(remove_unused_layers no)
 		(uuid "6985fee4-49f5-4b3e-9760-ec0fa8ba903a")
 	)
-	(pad "RL" thru_hole circle
+	(pad "RSTl" thru_hole circle
 		(at 7.62 0)
 		(size 2.05 2.05)
 		(drill 1.05)
@@ -340,7 +324,7 @@
 		(remove_unused_layers no)
 		(uuid "3d70d55a-be04-4693-99ce-850158db3d82")
 	)
-	(pad "RR" thru_hole circle
+	(pad "RSTr" thru_hole circle
 		(at 7.62 -15.22)
 		(size 2.05 2.05)
 		(drill 1.05)
@@ -348,13 +332,29 @@
 		(remove_unused_layers no)
 		(uuid "a96428a2-0484-4e41-af4a-5f3c84d6e91d")
 	)
-	(pad "VIN" thru_hole circle
+	(pad "Vin" thru_hole circle
 		(at 2.54 -15.22)
 		(size 2.05 2.05)
 		(drill 1.05)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(uuid "51856151-7ec5-47bc-97d7-ea3957b6cc3f")
+	)
+	(pad "Vout3" thru_hole circle
+		(at 35.56 -15.22)
+		(size 2.05 2.05)
+		(drill 1.05)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "077ef2c2-c52a-4dbe-8a8d-e4cb8ac39d16")
+	)
+	(pad "Vout5" thru_hole circle
+		(at 10.16 -15.22)
+		(size 2.05 2.05)
+		(drill 1.05)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b0a7a338-6ad9-4e23-9e77-bad869eff8f9")
 	)
 	(embedded_fonts no)
 )

@@ -132,14 +132,6 @@
 		(remove_unused_layers no)
 		(uuid "99e71c93-5ae4-49dd-8af1-b622655664c5")
 	)
-	(pad "VCC" thru_hole circle
-		(at 0 -7.62)
-		(size 1.58 1.58)
-		(drill 0.8)
-		(layers "*.Cu" "*.Mask")
-		(remove_unused_layers no)
-		(uuid "7f893dcc-1f54-4471-bfe7-8878a50e219b")
-	)
 	(pad "Vbat" thru_hole circle
 		(at 5.08 0)
 		(size 1.58 1.58)
@@ -147,6 +139,14 @@
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(uuid "561aed64-a32c-4fe2-b485-9f14b987d848")
+	)
+	(pad "Vin" thru_hole circle
+		(at 0 -7.62)
+		(size 1.58 1.58)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7f893dcc-1f54-4471-bfe7-8878a50e219b")
 	)
 	(pad "X1" thru_hole rect
 		(at 0 0)

@@ -1,0 +1,142 @@
+(footprint "DIode 1N4001G THT min"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "diode 1N4001G tht")
+	(property "Reference" "D"
+		(at 5.08 -2.54 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "f8ede965-e039-4a3d-ac12-2b8909a0b798")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "1N4001G"
+		(at 5.08 2.54 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "1c9d7cd1-5848-4808-be8a-aa39e5bfbedc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.chipdip.ru/product/1n4001g-on-semiconductor-8002986002"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d316dbfb-e029-44b5-bb19-84643ae95240")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Diode 1N4001G THT"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "72e16744-668a-439b-ad07-481f79612346")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -1.14 -1.46)
+		(end 11.3 1.46)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "da08797c-0847-4a5f-b3ef-2498e4ca567d")
+	)
+	(fp_rect
+		(start -1.28 -1.6)
+		(end 11.44 1.6)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "5b299eab-5cdf-487e-951a-8d60030ed7f8")
+	)
+	(fp_rect
+		(start 0 -0.43)
+		(end 2.48 0.43)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "b5590fbc-5bbc-4319-a81c-dbccdbaa2b8f")
+	)
+	(fp_rect
+		(start 2.48 -1.35)
+		(end 7.68 1.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "9b293e27-d057-4d89-b7d6-4ce2a9357c20")
+	)
+	(fp_rect
+		(start 7.68 -0.43)
+		(end 10.16 0.43)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "230a1fa0-cda3-4869-a1dd-8af06191d4fb")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 5.08 5.08 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "003b8f6d-ae03-4192-82c0-96b16183577a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "GND" thru_hole circle
+		(at 10.16 0)
+		(size 2.06 2.06)
+		(drill 1.06)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1f7f31da-8eae-4ff8-94a8-051eaab40c07")
+	)
+	(pad "Vin" thru_hole rect
+		(at 0 0)
+		(size 2.06 2.06)
+		(drill 1.06)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "c6e2bfda-487b-41ff-8a29-2c78613bb2ee")
+	)
+	(embedded_fonts no)
+)

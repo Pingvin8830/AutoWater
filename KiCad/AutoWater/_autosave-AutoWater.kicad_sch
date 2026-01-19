@@ -8437,7 +8437,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 193.04 112.522 90)
 			(effects
 				(font
@@ -8446,7 +8446,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206jr-072k2l-yageo-8002030474"
 			(at 193.04 114.3 0)
 			(effects
 				(font
@@ -8566,7 +8566,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "yellow"
 			(at 240.665 45.72 0)
 			(do_not_autoplace yes)
 			(effects
@@ -8575,7 +8575,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 238.125 44.45 0)
 			(effects
 				(font
@@ -8584,7 +8584,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/gnl-3014yd-svetodiod-zheltyy-60-d-3mm-15mkd-585nm-g-nor-9000422962"
 			(at 238.125 44.45 0)
 			(effects
 				(font
@@ -8826,7 +8826,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 0805"
 			(at 78.232 125.73 90)
 			(effects
 				(font
@@ -8835,7 +8835,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/rc0805fr-103k3l-yageo-8002004125"
 			(at 80.01 125.73 0)
 			(effects
 				(font
@@ -8955,7 +8955,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "green"
 			(at 240.665 30.48 0)
 			(do_not_autoplace yes)
 			(effects
@@ -8964,7 +8964,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 238.125 29.21 0)
 			(effects
 				(font
@@ -8973,7 +8973,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/gnl-3014gd-svetodiod-zelenyy-60-d-3mm-30-50mkd-565nm-g-nor-9000422961"
 			(at 238.125 29.21 0)
 			(effects
 				(font
@@ -9043,7 +9043,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Arduino Nano V3 Type C PBS"
 			(at 260.35 100.33 0)
 			(effects
 				(font
@@ -9443,7 +9443,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Capacitor Murata SMD 0603"
 			(at 28.9052 67.31 0)
 			(effects
 				(font
@@ -9452,7 +9452,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/10-mkf-x5r-25v-0603-grm188r61e106ka73d-kondensator-murata-9000600378"
 			(at 27.94 63.5 0)
 			(effects
 				(font
@@ -9513,7 +9513,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 0805"
 			(at 118.872 170.18 90)
 			(effects
 				(font
@@ -9522,7 +9522,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/rc0805fr-103k3l-yageo-8002004125"
 			(at 120.65 170.18 0)
 			(effects
 				(font
@@ -9583,7 +9583,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Connector 5.5x2.1 DS-201"
 			(at 20.574 35.56 90)
 			(effects
 				(font
@@ -9653,7 +9653,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 222.377 59.69 90)
 			(effects
 				(font
@@ -9662,7 +9662,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206fr-07150rl-yageo-8002025520"
 			(at 224.155 59.69 0)
 			(effects
 				(font
@@ -9715,7 +9715,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "yellow"
 			(at 240.665 50.8 0)
 			(do_not_autoplace yes)
 			(effects
@@ -9724,7 +9724,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 238.125 49.53 0)
 			(effects
 				(font
@@ -9733,7 +9733,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/gnl-3014yd-svetodiod-zheltyy-60-d-3mm-15mkd-585nm-g-nor-9000422962"
 			(at 238.125 49.53 0)
 			(effects
 				(font
@@ -9803,7 +9803,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 222.377 64.77 90)
 			(effects
 				(font
@@ -9812,7 +9812,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206fr-07150rl-yageo-8002025520"
 			(at 224.155 64.77 0)
 			(effects
 				(font
@@ -9873,7 +9873,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 222.377 39.37 90)
 			(effects
 				(font
@@ -9882,7 +9882,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206fr-07150rl-yageo-8002025520"
 			(at 224.155 39.37 0)
 			(effects
 				(font
@@ -9943,7 +9943,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 222.377 49.53 90)
 			(effects
 				(font
@@ -9952,7 +9952,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206fr-07150rl-yageo-8002025520"
 			(at 224.155 49.53 0)
 			(effects
 				(font
@@ -10005,7 +10005,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "orange"
 			(at 240.665 66.04 0)
 			(do_not_autoplace yes)
 			(effects
@@ -10014,7 +10014,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 238.125 64.77 0)
 			(effects
 				(font
@@ -10023,7 +10023,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/gnl-3014uec-svetodiod-oranzhevyy-25-d-3mm-150mkd-g-nor-9000423001"
 			(at 238.125 64.77 0)
 			(effects
 				(font
@@ -10093,7 +10093,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Stabilizer 5V AMS1117-5.0S SMD"
 			(at 38.1 57.15 0)
 			(effects
 				(font
@@ -10102,7 +10102,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ams1117-5.0s-stabilizator-napryazheniya-5v-1a-sot-89-umw-9001333446"
 			(at 38.1 57.15 0)
 			(effects
 				(font
@@ -10232,7 +10232,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Arduino Nano V3 Type C PBS"
 			(at 45.72 106.68 0)
 			(effects
 				(font
@@ -10553,7 +10553,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "1N4001G"
 			(at 157.48 41.91 0)
 			(effects
 				(font
@@ -10562,7 +10562,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:DIode 1N4001G THT min"
 			(at 160.02 41.91 0)
 			(effects
 				(font
@@ -10571,7 +10571,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/1n4001g-on-semiconductor-8002986002"
 			(at 160.02 41.91 0)
 			(effects
 				(font
@@ -10643,7 +10643,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "BC817-25"
 			(at 143.51 69.85 0)
 			(effects
 				(font
@@ -10653,7 +10653,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:NPN transistor BC817-25"
 			(at 143.51 66.04 0)
 			(effects
 				(font
@@ -10662,7 +10662,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/bc817-25-215-tranzistor-npn-45v-0.5a-0.31vt-sot-23-nexperia-113261264"
 			(at 138.43 68.58 0)
 			(effects
 				(font
@@ -10994,7 +10994,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Arduino Nano V3 Type C PBS"
 			(at 147.32 119.38 0)
 			(effects
 				(font
@@ -11154,7 +11154,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:PLS-4"
 			(at 24.13 141.605 0)
 			(effects
 				(font
@@ -11298,7 +11298,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:RTC DS1307 DIP"
 			(at 199.39 113.03 0)
 			(effects
 				(font
@@ -11387,7 +11387,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Register 74HC164M SOP-14"
 			(at 196.215 33.02 0)
 			(effects
 				(font
@@ -11396,7 +11396,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/74hc164m-tr-8-bit-posledovatelnyy-sdvigovyy-registr-hgsemi-9001240838"
 			(at 196.215 33.02 0)
 			(effects
 				(font
@@ -11693,7 +11693,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Capacitor Murata SMD 0603"
 			(at 51.7652 67.31 0)
 			(effects
 				(font
@@ -11702,7 +11702,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/10-mkf-x5r-25v-0603-grm188r61e106ka73d-kondensator-murata-9000600378"
 			(at 50.8 63.5 0)
 			(effects
 				(font
@@ -11763,7 +11763,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 222.377 34.29 90)
 			(effects
 				(font
@@ -11772,7 +11772,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206fr-07150rl-yageo-8002025520"
 			(at 224.155 34.29 0)
 			(effects
 				(font
@@ -12075,7 +12075,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 125.222 68.58 90)
 			(effects
 				(font
@@ -12084,7 +12084,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206jr-072k2l-yageo-8002030474"
 			(at 127 68.58 0)
 			(effects
 				(font
@@ -12317,7 +12317,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Arduino Nano V3 Type C PBS"
 			(at 97.79 38.1 0)
 			(effects
 				(font
@@ -12476,7 +12476,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:PLS-3"
 			(at 86.36 43.18 0)
 			(effects
 				(font
@@ -12551,7 +12551,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Capacitor Murata SMD 0402"
 			(at 148.2852 45.72 0)
 			(effects
 				(font
@@ -12560,7 +12560,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/0.1-mkf-x7r-25v-10-0402-grm155r71e104ke14d-murata-9000295904"
 			(at 147.32 41.91 0)
 			(effects
 				(font
@@ -12620,7 +12620,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:PLS-3"
 			(at 80.01 36.83 0)
 			(effects
 				(font
@@ -12694,7 +12694,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Connector B2B-XH-A"
 			(at 140.97 44.45 0)
 			(effects
 				(font
@@ -12832,7 +12832,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Batary box CR2032"
 			(at 215.9 105.156 90)
 			(effects
 				(font
@@ -12841,7 +12841,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/l-kls5-cr2032-11-panel-bat-2032-bth-v47-20-kls-8040391090"
 			(at 215.9 105.156 90)
 			(effects
 				(font
@@ -12960,7 +12960,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "red"
 			(at 240.665 40.64 0)
 			(do_not_autoplace yes)
 			(effects
@@ -12969,7 +12969,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 238.125 39.37 0)
 			(effects
 				(font
@@ -12978,7 +12978,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/gnl-3014hd-svetodiod-krasnyy-60-d-3mm-5-10mkd-700nm-g-nor-9000422960"
 			(at 238.125 39.37 0)
 			(effects
 				(font
@@ -13050,7 +13050,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Capacitor Murata SMD 0402"
 			(at 21.2852 106.68 0)
 			(effects
 				(font
@@ -13059,7 +13059,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/0.1-mkf-x7r-25v-10-0402-grm155r71e104ke14d-murata-9000295904"
 			(at 20.32 102.87 0)
 			(effects
 				(font
@@ -13068,7 +13068,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Capacitor"
+		(property "Description" "Capacitor ceramic SMD 0805"
 			(at 20.32 102.87 0)
 			(effects
 				(font
@@ -13112,7 +13112,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "yellow"
 			(at 240.665 60.96 0)
 			(do_not_autoplace yes)
 			(effects
@@ -13121,7 +13121,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 238.125 59.69 0)
 			(effects
 				(font
@@ -13130,7 +13130,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/gnl-3014yd-svetodiod-zheltyy-60-d-3mm-15mkd-585nm-g-nor-9000422962"
 			(at 238.125 59.69 0)
 			(effects
 				(font
@@ -13199,7 +13199,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 172.72 113.792 90)
 			(effects
 				(font
@@ -13208,7 +13208,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206jr-072k2l-yageo-8002030474"
 			(at 172.72 115.57 0)
 			(effects
 				(font
@@ -13269,7 +13269,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 0805"
 			(at 78.232 106.68 90)
 			(effects
 				(font
@@ -13278,7 +13278,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/rc0805fr-103k3l-yageo-8002004125"
 			(at 80.01 106.68 0)
 			(effects
 				(font
@@ -13331,7 +13331,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "red"
 			(at 240.665 55.88 0)
 			(do_not_autoplace yes)
 			(effects
@@ -13340,7 +13340,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 238.125 54.61 0)
 			(effects
 				(font
@@ -13419,7 +13419,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 222.377 44.45 90)
 			(effects
 				(font
@@ -13428,7 +13428,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206fr-07150rl-yageo-8002025520"
 			(at 224.155 44.45 0)
 			(effects
 				(font
@@ -13554,7 +13554,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 179.07 113.792 90)
 			(effects
 				(font
@@ -13563,7 +13563,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206jr-072k2l-yageo-8002030474"
 			(at 179.07 115.57 0)
 			(effects
 				(font
@@ -13624,7 +13624,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 222.377 29.21 90)
 			(effects
 				(font
@@ -13633,7 +13633,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206fr-07150rl-yageo-8002025520"
 			(at 224.155 29.21 0)
 			(effects
 				(font
@@ -13830,7 +13830,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Arduino Nano V3 Type C PBS"
 			(at 247.65 128.27 0)
 			(effects
 				(font
@@ -14056,7 +14056,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 0805"
 			(at 78.232 144.78 90)
 			(effects
 				(font
@@ -14065,7 +14065,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/rc0805fr-103k3l-yageo-8002004125"
 			(at 80.01 144.78 0)
 			(effects
 				(font
@@ -14126,7 +14126,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 222.377 54.61 90)
 			(effects
 				(font
@@ -14135,7 +14135,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/ac1206fr-07150rl-yageo-8002025520"
 			(at 224.155 54.61 0)
 			(effects
 				(font
@@ -14329,7 +14329,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Arduino Nano V3 Type C PBS"
 			(at 167.64 43.18 0)
 			(effects
 				(font
@@ -14556,7 +14556,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:MicroSD"
 			(at 129.54 149.86 0)
 			(effects
 				(font
@@ -14647,7 +14647,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Arduino Nano V3 Type C PBS"
 			(at 35.56 22.86 0)
 			(effects
 				(font
@@ -14806,7 +14806,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Rohm SMD 0603"
 			(at 71.12 132.842 90)
 			(effects
 				(font
@@ -14815,7 +14815,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/esr03ezpf1002-rohm-8009610226"
 			(at 71.12 134.62 0)
 			(effects
 				(font
@@ -14934,7 +14934,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "red"
 			(at 240.665 35.56 0)
 			(do_not_autoplace yes)
 			(effects
@@ -14943,7 +14943,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 238.125 34.29 0)
 			(effects
 				(font
@@ -14952,7 +14952,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chipdip.ru/product/gnl-3014hd-svetodiod-krasnyy-60-d-3mm-5-10mkd-700nm-g-nor-9000422960"
 			(at 238.125 34.29 0)
 			(effects
 				(font

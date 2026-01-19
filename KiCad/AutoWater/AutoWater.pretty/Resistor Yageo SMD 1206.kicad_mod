@@ -1,0 +1,138 @@
+(footprint "Resistor Yageo SMD 1206"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "r res resistor smd 1206")
+	(property "Reference" "R"
+		(at 1.27 -1.905 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "ee21bc98-b1a4-4771-85cf-73bface9ca33")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "1206"
+		(at 1.27 1.905 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "578015d1-ef95-4487-a16b-7446025ffdfd")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.chipdip.ru/product/ac1206jr-072k2l-yageo-8002030474"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "431877a6-8932-48d7-a268-ba96f3afc65d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e6ac1129-2157-4609-b9fa-6c209962103f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -0.41 -1.01)
+		(end 3.31 1.01)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "b5fdd78e-5389-4740-8580-4ee7f82e8b19")
+	)
+	(fp_rect
+		(start -0.55 -1.15)
+		(end 3.45 1.15)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "3083c058-9d3a-46bd-b971-f055764e9d2c")
+	)
+	(fp_rect
+		(start -0.1 -0.8)
+		(end 0.3 0.8)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "4de51cb5-fe91-4870-bec6-b2a1fd93f1c9")
+	)
+	(fp_rect
+		(start -0.1 -0.8)
+		(end 3 0.8)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "62e5cac9-a5ca-4e2c-b1cf-ab7c52aec3dd")
+	)
+	(fp_rect
+		(start 2.6 -0.8)
+		(end 3 0.8)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "0838c89e-298f-4eae-baa8-d4cec91b590d")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 1.27 3.81 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "a7ca26fc-232c-4f95-a417-30848647ff7b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 0 0)
+		(size 0.6 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "8db445ec-b40c-4870-8ed4-2889cfc964d7")
+	)
+	(pad "2" smd rect
+		(at 2.9 0)
+		(size 0.6 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "acce4ed8-2952-415c-a03c-df60e1217c85")
+	)
+	(embedded_fonts no)
+)

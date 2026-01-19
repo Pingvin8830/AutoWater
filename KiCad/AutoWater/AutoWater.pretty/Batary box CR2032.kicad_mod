@@ -28,7 +28,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://static.chipdip.ru/lib/705/DOC054705681.pdf"
+	(property "Datasheet" "https://www.chipdip.ru/product/l-kls5-cr2032-11-panel-bat-2032-bth-v47-20-kls-8040391090"
 		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
@@ -250,7 +250,7 @@
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "d03ac777-2276-4cac-b6b8-e8912f1bcc96")
 	)
-	(pad "VCC" smd rect
+	(pad "Vout" smd rect
 		(at 21.175 0)
 		(size 3.05 3.4)
 		(layers "F.Cu" "F.Mask" "F.Paste")

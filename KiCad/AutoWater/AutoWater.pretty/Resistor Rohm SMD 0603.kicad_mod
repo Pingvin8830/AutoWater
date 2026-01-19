@@ -1,0 +1,138 @@
+(footprint "Resistor Rohm SMD 0603"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "r res resistor smd 0603")
+	(property "Reference" "R"
+		(at 0.635 -1.27 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "18bbf85a-9975-43f1-80bf-9a3c1b8fdeac")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "0603"
+		(at 0.635 1.905 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "5d25ed78-0b6e-4887-8d79-0d5d7e04f154")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.chipdip.ru/product/esr03ezpf1002-rohm-8009610226"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "648249d3-c829-4bdd-b626-486b496704d0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "42dbd786-53cf-4a26-8044-5b2069cb21cb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -0.36 -0.51)
+		(end 1.86 0.51)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "0b957e5d-fced-4e60-9b91-1337bcf0082e")
+	)
+	(fp_rect
+		(start -0.5 -0.65)
+		(end 2 0.65)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "d0c88e68-9bd8-4915-a394-d575241edd33")
+	)
+	(fp_rect
+		(start -0.05 -0.4)
+		(end 0.25 0.4)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "163c1ab5-a432-43a5-a2bf-f05789ebf6c9")
+	)
+	(fp_rect
+		(start -0.05 -0.4)
+		(end 1.55 0.4)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "49b4c17a-e827-4db5-a75c-3829b296fdcf")
+	)
+	(fp_rect
+		(start 1.25 -0.4)
+		(end 1.55 0.4)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "e76c58fa-ad0e-4f8d-bbe9-d9e3d4d3096c")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0.635 3.81 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "869b87ec-2f97-4d40-8447-489a246f0432")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 0 0)
+		(size 0.5 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c5a02d58-a344-4efa-ae2b-827dd9f2e73b")
+	)
+	(pad "2" smd rect
+		(at 1.5 0)
+		(size 0.5 0.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "8f11252b-0aaf-4547-a07b-d23a703ccbc3")
+	)
+	(embedded_fonts no)
+)

@@ -1,9 +1,9 @@
-(footprint "Resistor 0805"
+(footprint "Resistor Yageo SMD 0805"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
 	(layer "F.Cu")
-	(tags "res r resistor smd 0805 ERJ-PB6B2201V")
+	(tags "res r resistor smd 0805")
 	(property "Reference" "R"
 		(at 1.27 -2.54 0)
 		(unlocked yes)
@@ -16,7 +16,7 @@
 			)
 		)
 	)
-	(property "Value" "ERJ-PB6B2201V"
+	(property "Value" "RC0805FR-103K3L"
 		(at 1.27 2.54 0)
 		(unlocked yes)
 		(layer "F.Fab")
@@ -28,7 +28,7 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.chipdip.ru/product/erj-pb6b2201v-thick-film-resistors-smd-0805-panasonic-8006415716"
+	(property "Datasheet" "https://www.chipdip.ru/product/rc0805fr-103k3l-yageo-8002004125"
 		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
@@ -56,8 +56,8 @@
 	)
 	(attr smd)
 	(fp_rect
-		(start -0.31 -0.735)
-		(end 1.91 0.735)
+		(start -0.385 -0.835)
+		(end 2.235 0.835)
 		(stroke
 			(width 0.1)
 			(type solid)
@@ -67,19 +67,19 @@
 		(uuid "4aef7666-a31c-48d7-a35b-cdf187c81e08")
 	)
 	(fp_rect
-		(start -0.75 -1.175)
-		(end 2.35 1.175)
+		(start -0.525 -0.975)
+		(end 2.375 0.975)
 		(stroke
 			(width 0.05)
-			(type default)
+			(type solid)
 		)
 		(fill no)
 		(layer "F.CrtYd")
 		(uuid "2a9c8431-4cfb-448b-8635-ca4957d3f7ef")
 	)
 	(fp_rect
-		(start -0.2 -0.625)
-		(end 0.2 0.625)
+		(start -0.075 -0.625)
+		(end 0.275 0.625)
 		(stroke
 			(width 0.01)
 			(type solid)
@@ -89,8 +89,8 @@
 		(uuid "35f0c598-8a23-4411-8fe6-8c239e1a7eff")
 	)
 	(fp_rect
-		(start -0.2 -0.625)
-		(end 1.8 0.625)
+		(start -0.075 -0.625)
+		(end 1.925 0.625)
 		(stroke
 			(width 0.01)
 			(type solid)
@@ -100,8 +100,8 @@
 		(uuid "131c4dec-d0cb-4dd2-8298-12ce2c9012d8")
 	)
 	(fp_rect
-		(start 1.4 -0.625)
-		(end 1.8 0.625)
+		(start 1.575 -0.625)
+		(end 1.925 0.625)
 		(stroke
 			(width 0.01)
 			(type solid)
@@ -124,13 +124,13 @@
 	)
 	(pad "1" smd rect
 		(at 0 0)
-		(size 1 1.85)
+		(size 0.55 1.45)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "31363c8e-eb6d-49df-89f0-feeb1f8a61e4")
 	)
 	(pad "2" smd rect
-		(at 1.6 0)
-		(size 1 1.85)
+		(at 1.85 0)
+		(size 0.55 1.45)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "9826070e-0f69-4542-8a4e-c1c13ffd9859")
 	)
