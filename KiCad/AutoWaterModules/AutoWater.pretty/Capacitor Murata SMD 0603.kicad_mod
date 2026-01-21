@@ -1,0 +1,141 @@
+(footprint "Capacitor Murata SMD 0603"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "capacitor c smd 0603")
+	(property "Reference" "С"
+		(at 1.27 -1.905 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "3a14c518-a249-41b8-8072-1bfda0a44838")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "0603"
+		(at 0.635 1.27 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "000acc67-0b38-4caf-8749-fd2501204018")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.chipdip.ru/product/10-mkf-x5r-25v-0603-grm188r61e106ka73d-kondensator-murata-9000600378"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "83c76dd9-5bf8-4d7d-b402-bbbb065768aa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Capacitor Murata SMD 0603"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1d8fb4e9-82dd-482b-bcf6-e4db54ee39e6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -0.36 -0.61)
+		(end 1.86 0.61)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "cbf19b4e-4132-4f62-a117-bb97f35e9b4c")
+	)
+	(fp_rect
+		(start -0.5 -0.75)
+		(end 2 0.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "37002c80-116d-4ba8-af75-d4845d967477")
+	)
+	(fp_rect
+		(start -0.05 -0.4)
+		(end 0.25 0.4)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "03994935-600b-4109-b8fa-a60ca171b546")
+	)
+	(fp_rect
+		(start -0.05 -0.4)
+		(end 1.55 0.4)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "9c5d7803-70bc-40c8-9257-fe80e66a5704")
+	)
+	(fp_rect
+		(start 1.25 -0.4)
+		(end 1.55 0.4)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "f4bb555b-ccda-4193-be70-cae3fc540a80")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0.635 3.175 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "0e898a82-af5e-42ee-b32c-5a1dae2d9f78")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "GND" smd rect
+		(at 1.5 0)
+		(size 0.5 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "71ffec3b-da46-473b-ba66-1d4db591ecb1")
+	)
+	(pad "Vin" smd roundrect
+		(at 0 0)
+		(size 0.5 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0)
+		(chamfer_ratio 0.2)
+		(chamfer top_right bottom_right)
+		(uuid "390230ef-7990-4152-bcc7-65815e2e00b2")
+	)
+	(embedded_fonts no)
+)

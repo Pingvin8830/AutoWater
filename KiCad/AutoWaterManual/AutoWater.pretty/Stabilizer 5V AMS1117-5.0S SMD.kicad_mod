@@ -1,0 +1,172 @@
+(footprint "Stabilizer 5V AMS1117-5.0S SMD"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "stabilizer 5V AMS1117 SMD")
+	(property "Reference" "STB"
+		(at 1.5 -1.725 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "b9a1c343-9927-4f28-b140-6521d5129b64")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "AMS1117-5.0S"
+		(at 1.27 1.27 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "5b168a57-f036-4a5f-b53e-85c4a6b57bea")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.chipdip.ru/product/ams1117-5.0s-stabilizator-napryazheniya-5v-1a-sot-89-umw-9001333446"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "938a9ecc-0fe2-4d51-8556-9eef768152bc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a0aca76a-7bc3-4fbc-8246-24c38f788754")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -0.86 -3.865)
+		(end 3.86 0.71)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "08eb2397-f83e-4ff2-b404-ef6e05aae7b8")
+	)
+	(fp_rect
+		(start -1 -4.005)
+		(end 4 0.85)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "56df2e01-1398-48e8-8e21-7deb2b4ac6e8")
+	)
+	(fp_rect
+		(start -0.75 -2.95)
+		(end 3.75 -0.5)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "66965fef-a782-4914-b8ed-c1e6233450f3")
+	)
+	(fp_rect
+		(start -0.24 -0.5)
+		(end 0.24 0.5)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "1238356f-c5b5-4f9d-a7ae-7baf2eee785f")
+	)
+	(fp_rect
+		(start 0.5 -3.655)
+		(end 2.5 -2.95)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "9bde0fbd-c615-45c9-a419-495bd6684da0")
+	)
+	(fp_rect
+		(start 1.26 -0.5)
+		(end 1.74 0.5)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "9c89ed68-f34f-494e-990d-2eb8f424487e")
+	)
+	(fp_rect
+		(start 2.76 -0.5)
+		(end 3.24 0.5)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "53f65fe5-406a-4e8b-9923-17c8df4e1572")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 1.27 3.81 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "1273f14b-48a8-48d0-89ef-dcf1fd1781be")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "GND" smd rect
+		(at 0 0)
+		(size 0.68 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "cbedd5fc-a4f0-4464-a67b-7009647a33a2")
+	)
+	(pad "Temp" smd rect
+		(at 1.5 -3.3025)
+		(size 2.2 0.905)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "cd4f9297-e989-4fab-aad9-c120a790ca1d")
+	)
+	(pad "Vin" smd rect
+		(at 3 0)
+		(size 0.68 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "03713b2a-babd-4b21-b0a2-5bc320c200d5")
+	)
+	(pad "Vout" smd rect
+		(at 1.5 0)
+		(size 0.68 1.2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d578ebd2-2c1f-4a82-9cf5-f5cbbecb1b7e")
+	)
+	(embedded_fonts no)
+)

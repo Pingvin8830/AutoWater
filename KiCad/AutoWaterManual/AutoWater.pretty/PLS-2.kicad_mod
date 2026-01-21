@@ -1,0 +1,120 @@
+(footprint "PLS-2"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "pls connector")
+	(property "Reference" "PLS-2"
+		(at 1.905 -2.54 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d349ab1f-a5df-4cb6-b2d2-1c19b43e4dc6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Без имени"
+		(at 1.27 2.54 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "d7025795-6ab7-4f70-921a-6bd386de4080")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.chipdip.ru/product/shtyrevoy-soedinitel-pls-kontakty-p2.54-40p-pls-40-8008632749"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b9a7d209-002c-464a-b51d-3c241fe3cd73")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "cbdebe39-da6d-4e77-8de8-7e56b6f50279")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -1.38 -1.36)
+		(end 3.92 1.36)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "0faadca9-3f9a-4a70-a7bc-e88639533400")
+	)
+	(fp_rect
+		(start -1.52 -1.5)
+		(end 4.06 1.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "5b3471fd-8df4-4e9f-a1d7-6c9b2c51d4dd")
+	)
+	(fp_rect
+		(start -1.27 -1.25)
+		(end 3.81 1.25)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "3867ed41-98c0-4757-b2f1-6b3ff31b9523")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0.635 4.445 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "3c9755c2-fcf4-4c73-9ccf-f2825ae8170f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 2.02 2.02)
+		(drill 1.02)
+		(layers "*.Cu" "*.Mask" "Dwgs.User")
+		(remove_unused_layers no)
+		(uuid "29ed23ac-53dd-4448-b483-f4b2cc032664")
+	)
+	(pad "2" thru_hole circle
+		(at 2.54 0)
+		(size 2.02 2.02)
+		(drill 1.02)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2f5087c7-37a0-40c2-a6d3-e665632f45d5")
+	)
+	(embedded_fonts no)
+)

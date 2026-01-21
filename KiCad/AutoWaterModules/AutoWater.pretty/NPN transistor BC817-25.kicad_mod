@@ -1,0 +1,155 @@
+(footprint "NPN transistor BC817-25"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "smd npn transistor BC817-25")
+	(property "Reference" "NPNTransistor"
+		(at 1.27 -3.81 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "15405199-7ef6-4bc6-a083-efe798eba3fa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "BC817-25"
+		(at 1.27 1.27 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "37dcfd10-7380-466a-97fc-6f1557ae1a67")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://static.chipdip.ru/lib/793/DOC011793284.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1368afc9-5dec-46fb-9da1-157169561e53")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "785f79a8-8acc-4a04-97f5-497a8feb3f4f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -0.66 -2.46)
+		(end 2.56 0.46)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "fe1a86f1-168d-4b42-9a2d-59aa56bd17b1")
+	)
+	(fp_rect
+		(start -0.8 -2.6)
+		(end 2.7 0.6)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "7b0fe6ab-15f0-4dfb-ac63-7657d643a8db")
+	)
+	(fp_rect
+		(start -0.55 -1.7)
+		(end 2.45 -0.3)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "9b3d1c44-e110-4514-a294-2ee3bf1a8610")
+	)
+	(fp_rect
+		(start -0.24 -0.3)
+		(end 0.24 0.25)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "146f2469-3f72-431c-af1a-b70d3d4e96d3")
+	)
+	(fp_rect
+		(start 0.71 -2.25)
+		(end 1.19 -1.7)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "55d94e84-e7df-43e7-a184-2690458a97a1")
+	)
+	(fp_rect
+		(start 1.66 -0.3)
+		(end 2.14 0.25)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "495195c0-09bb-4446-bb20-f5a6887fa207")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 1.27 2.54 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "c2e3f85a-71f3-48d1-bd0c-5dcc45c18f86")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "B" smd rect
+		(at 0 0)
+		(size 0.6 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "b6b6a75f-3b28-4453-be2e-87241db3d48d")
+	)
+	(pad "C" smd rect
+		(at 0.95 -2)
+		(size 0.6 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "181b84e0-860d-4f96-823e-9f534be3ead3")
+	)
+	(pad "E" smd rect
+		(at 1.9 0)
+		(size 0.6 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "3be15006-70e7-42bc-8eb9-1e3f3ed02453")
+	)
+	(embedded_fonts no)
+)

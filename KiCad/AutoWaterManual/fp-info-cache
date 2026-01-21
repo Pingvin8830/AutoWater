@@ -1,0 +1,162 @@
+40683121054001
+AutoWater
+Arduino Nano V3 Type C PBS
+
+arduino nano pbs module
+0
+32
+32
+AutoWater
+Batary box CR2032
+
+CR2023 batary box smd
+0
+2
+2
+AutoWater
+Buffers TSSOP-14
+
+TSSOP-14 smd 74ABT125PW
+0
+14
+14
+AutoWater
+Capacitor Murata SMD 0402
+
+C capacitor smd 0402
+0
+2
+2
+AutoWater
+Capacitor Murata SMD 0603
+
+capacitor c smd 0603
+0
+2
+2
+AutoWater
+Capacity SMD 0603
+
+capacity c smd 0603
+0
+2
+2
+AutoWater
+Connector 5.5x2.1 DS-201
+
+connector ds-201 5.5x2.1 power
+0
+2
+2
+AutoWater
+Connector B2B-XH-A
+
+connector B2B XH
+0
+2
+2
+AutoWater
+Crystal 32768 SMD
+
+crystal 32768 smd
+0
+2
+2
+AutoWater
+DIode 1N4001G THT min
+
+diode 1N4001G tht
+0
+2
+2
+AutoWater
+Diode S1BFL
+
+smd diode S1BFL
+0
+2
+2
+AutoWater
+LED 3mm
+
+led 3
+0
+2
+2
+AutoWater
+MicroSD
+
+sd microsd
+0
+10
+10
+AutoWater
+NPN transistor BC817-25
+
+smd npn transistor BC817-25
+0
+3
+3
+AutoWater
+PLS-2
+
+pls connector
+0
+2
+2
+AutoWater
+PLS-3
+
+pls
+0
+3
+3
+AutoWater
+PLS-4
+
+pls 4
+0
+4
+4
+AutoWater
+RTC DS1307 DIP
+
+RTC DS1307 dip
+0
+8
+8
+AutoWater
+Register 74HC164M SOP-14
+
+register 74HC164M SOP-14 smd
+0
+14
+14
+AutoWater
+Resistor Rohm SMD 0603
+
+r res resistor smd 0603
+0
+2
+2
+AutoWater
+Resistor Yageo SMD 0805
+
+res r resistor smd 0805
+0
+2
+2
+AutoWater
+Resistor Yageo SMD 1206
+
+r res resistor smd 1206
+0
+2
+2
+AutoWater
+Stabilizer 5V AMS1117-5.0S SMD
+
+stabilizer 5V AMS1117 SMD
+0
+4
+4

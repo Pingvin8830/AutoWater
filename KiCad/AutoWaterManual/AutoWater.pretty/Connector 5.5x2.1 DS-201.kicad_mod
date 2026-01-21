@@ -1,0 +1,120 @@
+(footprint "Connector 5.5x2.1 DS-201"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "connector ds-201 5.5x2.1 power")
+	(property "Reference" "Power"
+		(at 0 -2.54 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "7201ef2d-7369-4720-bef5-b6485e5012f1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "DS-201"
+		(at 0 2.54 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "2badc570-50ad-4782-94f5-0515a6f8453e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://static.chipdip.ru/lib/078/DOC001078407.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "08444eaf-c1e8-48cb-9c7a-540a25259201")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Power connector DS-201 5.5x2.1"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d2094c0c-83f7-4813-90da-049794acd9b4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -7.91 -4.61)
+		(end 6.81 4.61)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "cebbe39f-b59b-4bae-bd24-84e1e1fcd295")
+	)
+	(fp_rect
+		(start -8.05 -4.75)
+		(end 6.95 4.75)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "3f380ffc-29e5-453d-8307-d99ac6b0f0cc")
+	)
+	(fp_rect
+		(start -7.8 -4.5)
+		(end 6.7 4.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "a2243c69-a24e-42f1-ae7b-751be917aba5")
+	)
+	(fp_text user "${REFERENCE}"
+		(at -0.55 7.62 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "f3eda1ef-2a33-4388-a058-f68373da9c47")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "GND" thru_hole oval
+		(at 0 0)
+		(size 1.25 3.3)
+		(drill oval 0.45 2.5)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "65384398-2652-4a12-8d6c-b50fd89ca1ae")
+	)
+	(pad "Vout" thru_hole oval
+		(at 6 0)
+		(size 1.3 3.8)
+		(drill oval 0.5 3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "0a703919-9794-4654-82a0-60aa86060c55")
+	)
+	(embedded_fonts no)
+)

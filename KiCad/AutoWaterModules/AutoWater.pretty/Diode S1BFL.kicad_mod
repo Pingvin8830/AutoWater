@@ -1,0 +1,141 @@
+(footprint "Diode S1BFL"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "smd diode S1BFL")
+	(property "Reference" "Diode"
+		(at 2.54 -2.54 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "a414bcc8-1fa0-4305-a2ca-293570cf1100")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "S1BFL"
+		(at 1.27 2.54 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "d180154a-c681-4c06-bba1-8ce4cef51089")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://static.chipdip.ru/lib/469/DOC029469417.pdf"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a99aefb4-b4a1-4de1-beee-84fd651c16ec")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "34a3e910-2ea9-4215-b1aa-046ad8863ba4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -0.78 -1.085)
+		(end 3.64 1.085)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "e9d54634-c495-4a3e-9b5e-35f5d9eb4532")
+	)
+	(fp_rect
+		(start -0.92 -1.225)
+		(end 3.78 1.225)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "061eb170-5127-4ed8-b23c-99d1601314ab")
+	)
+	(fp_rect
+		(start -0.52 -0.575)
+		(end -0.07 0.575)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "58673aca-8de0-46a4-9e07-c37615625751")
+	)
+	(fp_rect
+		(start -0.07 -0.975)
+		(end 2.93 0.975)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "61d0f65d-e741-4a15-9720-295b354d767d")
+	)
+	(fp_rect
+		(start 2.93 -0.575)
+		(end 3.38 0.575)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "8ea2d0fd-74cc-4b1f-b5da-bee42dd36514")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 1.27 5.08 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "51f00644-27e9-4937-8290-7aafb1913ea3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "GND" smd rect
+		(at 2.86 0)
+		(size 1.34 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "75325656-4c36-41b6-afca-c83c976b9cd8")
+	)
+	(pad "VCC" smd roundrect
+		(at 0 0)
+		(size 1.34 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0)
+		(chamfer_ratio 0.2)
+		(chamfer top_left bottom_left)
+		(uuid "b772527b-8aeb-4aca-aa92-6436b4a02cf3")
+	)
+	(embedded_fonts no)
+)

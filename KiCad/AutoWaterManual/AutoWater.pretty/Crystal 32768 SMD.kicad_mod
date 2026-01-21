@@ -1,0 +1,116 @@
+(footprint "Crystal 32768 SMD"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(tags "crystal 32768 smd")
+	(property "Reference" "Crystal"
+		(at 1.27 -2.54 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "781f49c5-e8cb-4083-80ff-a9b58175f168")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "KSE-7R32768KDY2400A3"
+		(at 1.27 1.27 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "7b302fdd-c507-409b-9c13-21c4c5157407")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.chipdip.ru/product/smd-rezonator-kse-7r32768kdy2400a3-keen-side-9001296748"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c896bd75-20ef-4933-b62d-72f52bbd3ec2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "388769c9-3e29-42b6-bc46-e9cdd90d4b8e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -0.41 -0.71)
+		(end 1.81 0.71)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "5ac73bfa-fdbf-47b1-8c0d-d96bcbbbdb5a")
+	)
+	(fp_rect
+		(start -0.55 -0.85)
+		(end 1.95 0.85)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "c0642762-aff3-4eea-a04b-76aad17f993f")
+	)
+	(fp_rect
+		(start -0.3 -0.6)
+		(end 1.7 0.6)
+		(stroke
+			(width 0.01)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "28323ef7-393e-48de-9574-85b6743ecd3e")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 1.27 3.81 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "e1b8439d-f44e-4d9f-85c4-8664efdb3e4d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 0 0)
+		(size 0.6 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "7ed0b305-22c7-40b4-978e-7714e8333abf")
+	)
+	(pad "2" smd rect
+		(at 1.4 0)
+		(size 0.6 1.1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c306b422-35b2-452b-8bd8-8674ed270a7d")
+	)
+	(embedded_fonts no)
+)
