@@ -927,181 +927,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "AutoWater:Crystal"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Y"
-				(at 0 3.81 0)
-				(do_not_autoplace)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "~"
-				(at 0 -3.81 0)
-				(do_not_autoplace)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Two pin crystal"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "quartz ceramic resonator oscillator"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Crystal*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Crystal_0_1"
-				(polyline
-					(pts
-						(xy -2.54 0) (xy -1.905 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.905 -1.27) (xy -1.905 1.27)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.143 2.54)
-					(end 1.143 -2.54)
-					(stroke
-						(width 0.3048)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.905 -1.27) (xy 1.905 1.27)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 0) (xy 1.905 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Crystal_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 1.27)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 1.27)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "AutoWater:LCD I2C module"
 			(pin_numbers
 				(hide yes)
@@ -1617,15 +1442,15 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "AutoWater:RTC DS1307"
-			(pin_numbers
+		(symbol "AutoWater:RTC DS1307 module"
+			(pin_names
 				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "RTC"
-				(at 10.16 -11.43 0)
+				(at 7.62 -2.54 0)
 				(do_not_autoplace)
 				(effects
 					(font
@@ -1633,8 +1458,8 @@
 					)
 				)
 			)
-			(property "Value" "DS1307"
-				(at 10.16 -13.97 0)
+			(property "Value" "~"
+				(at 7.62 -5.08 0)
 				(do_not_autoplace)
 				(effects
 					(font
@@ -1651,7 +1476,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://roboshop.spb.ru/radio/mikroskhemy/real-time-clock/ds1307"
+			(property "Datasheet" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1660,7 +1485,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Real Time Clock DS1307"
+			(property "Description" "RTC DS1307 module"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1669,7 +1494,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "RTC DS1307"
+			(property "ki_keywords" "RTC DS1307 module"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1678,10 +1503,10 @@
 					(hide yes)
 				)
 			)
-			(symbol "RTC DS1307_0_1"
+			(symbol "RTC DS1307 module_0_1"
 				(rectangle
 					(start 0 0)
-					(end 15.24 -17.78)
+					(end 15.24 -12.7)
 					(stroke
 						(width 0)
 						(type default)
@@ -1691,27 +1516,9 @@
 					)
 				)
 			)
-			(symbol "RTC DS1307_1_1"
-				(pin passive line
-					(at -2.54 -7.62 0)
-					(length 2.54)
-					(name "SQW/OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "SQW/OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -2.54 -10.16 0)
+			(symbol "RTC DS1307 module_1_1"
+				(pin input line
+					(at -2.54 -5.08 0)
 					(length 2.54)
 					(name "SCL"
 						(effects
@@ -1728,8 +1535,8 @@
 						)
 					)
 				)
-				(pin passive line
-					(at -2.54 -12.7 0)
+				(pin input line
+					(at -2.54 -7.62 0)
 					(length 2.54)
 					(name "SDA"
 						(effects
@@ -1765,7 +1572,7 @@
 					)
 				)
 				(pin passive line
-					(at 5.08 -20.32 90)
+					(at 5.08 -15.24 90)
 					(length 2.54)
 					(name "GND"
 						(effects
@@ -1800,17 +1607,17 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin output line
 					(at 17.78 -5.08 180)
 					(length 2.54)
-					(name "X1"
+					(name "SQW/OUT"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "X1"
+					(number "SQW/OUT"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1818,17 +1625,17 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin output line
 					(at 17.78 -7.62 180)
 					(length 2.54)
-					(name "X2"
+					(name "DS"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "X2"
+					(number "DS"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2872,7 +2679,7 @@
 	)
 	(rectangle
 		(start 82.55 76.2)
-		(end 127 127)
+		(end 120.65 120.65)
 		(stroke
 			(width 0)
 			(type default)
@@ -3003,12 +2810,6 @@
 		(uuid "44853609-ef24-46a2-b940-7a77aec4fd03")
 	)
 	(junction
-		(at 88.9 87.63)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4905ddcd-6aec-4bb6-8c9b-2514ca333920")
-	)
-	(junction
 		(at 48.26 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3062,16 +2863,6 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 97.155) (xy 124.46 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0532db2a-fe01-49a7-a4f8-c3b7a5dbe8d8")
-	)
-	(wire
-		(pts
 			(xy 202.565 41.91) (xy 205.74 41.91)
 		)
 		(stroke
@@ -3089,16 +2880,6 @@
 			(type default)
 		)
 		(uuid "0ab170c3-172d-4108-9c0b-83dc2fcb077f")
-	)
-	(wire
-		(pts
-			(xy 114.3 102.87) (xy 124.46 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0adb4615-51a0-475b-b61f-06dbeaea994e")
 	)
 	(wire
 		(pts
@@ -3152,26 +2933,6 @@
 	)
 	(wire
 		(pts
-			(xy 88.9 102.235) (xy 91.44 102.235)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1da42f6d-6382-41c8-b43d-75771a892863")
-	)
-	(wire
-		(pts
-			(xy 121.92 97.155) (xy 124.46 97.155)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1ec546c1-fc4f-4402-83d4-f7cae5bd9614")
-	)
-	(wire
-		(pts
 			(xy 205.74 85.09) (xy 203.2 85.09)
 		)
 		(stroke
@@ -3192,13 +2953,13 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 87.63) (xy 99.06 89.535)
+			(xy 88.9 102.87) (xy 92.71 102.87)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "29fbebe5-d740-4899-9b64-1f1625a0dca8")
+		(uuid "251b37d8-3b9b-4656-9d89-2c785007fb06")
 	)
 	(wire
 		(pts
@@ -3259,16 +3020,6 @@
 			(type default)
 		)
 		(uuid "37da1037-1567-41d6-87cd-8cd1f3fef080")
-	)
-	(wire
-		(pts
-			(xy 88.9 99.695) (xy 91.44 99.695)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3d6046f3-ec18-43c8-8042-aa1d092d0fb9")
 	)
 	(wire
 		(pts
@@ -3352,16 +3103,6 @@
 	)
 	(wire
 		(pts
-			(xy 88.9 87.63) (xy 88.9 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5c373293-a62f-4854-8c07-0d0aab25776e")
-	)
-	(wire
-		(pts
 			(xy 228.6 46.99) (xy 231.14 46.99)
 		)
 		(stroke
@@ -3389,26 +3130,6 @@
 			(type default)
 		)
 		(uuid "662da471-347e-45e3-99cc-f14acd7beb69")
-	)
-	(wire
-		(pts
-			(xy 88.9 85.09) (xy 88.9 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "66b2b16a-3ed2-48ea-8fb8-2a8ffed806ea")
-	)
-	(wire
-		(pts
-			(xy 101.6 89.535) (xy 101.6 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6917a674-a33a-48f8-81c6-f5e2bf142ef7")
 	)
 	(wire
 		(pts
@@ -3462,6 +3183,16 @@
 	)
 	(wire
 		(pts
+			(xy 100.33 110.49) (xy 100.33 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7645e42e-3f2f-41e3-82be-ec857fd9ba57")
+	)
+	(wire
+		(pts
 			(xy 152.4 96.52) (xy 157.48 96.52)
 		)
 		(stroke
@@ -3492,23 +3223,13 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 99.695) (xy 114.3 102.87)
+			(xy 88.9 100.33) (xy 92.71 100.33)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8f70f341-d845-4abc-bd2d-8066f6c96e7a")
-	)
-	(wire
-		(pts
-			(xy 111.76 97.155) (xy 114.3 97.155)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "97ca3131-1f11-4350-b122-829b94352f8b")
+		(uuid "8d2e2323-12e6-42f8-b433-afce01ed8991")
 	)
 	(wire
 		(pts
@@ -3549,16 +3270,6 @@
 			(type default)
 		)
 		(uuid "a287d0c2-8228-48d2-8418-a39cf8cf591d")
-	)
-	(wire
-		(pts
-			(xy 114.3 99.695) (xy 111.76 99.695)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ac7b4d57-910a-4b63-bc45-f73445b83f7b")
 	)
 	(wire
 		(pts
@@ -3612,26 +3323,6 @@
 	)
 	(wire
 		(pts
-			(xy 88.9 87.63) (xy 99.06 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b9e87f75-f79b-48ad-83c9-da5542a9f75e")
-	)
-	(wire
-		(pts
-			(xy 99.06 112.395) (xy 99.06 115.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ba247087-9689-40ca-a587-d470ed8bd2c7")
-	)
-	(wire
-		(pts
 			(xy 97.79 29.21) (xy 97.79 31.75)
 		)
 		(stroke
@@ -3682,16 +3373,6 @@
 	)
 	(wire
 		(pts
-			(xy 88.9 104.775) (xy 91.44 104.775)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c736dd65-312d-41dd-8c3a-4d84b7258ca3")
-	)
-	(wire
-		(pts
 			(xy 48.26 87.63) (xy 48.26 85.09)
 		)
 		(stroke
@@ -3709,16 +3390,6 @@
 			(type default)
 		)
 		(uuid "c99d7371-6d4c-4fc7-984c-ac4927084b69")
-	)
-	(wire
-		(pts
-			(xy 104.14 87.63) (xy 101.6 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cf67a892-075b-4ecd-bd7a-56aa7535b36e")
 	)
 	(wire
 		(pts
@@ -3772,6 +3443,16 @@
 	)
 	(wire
 		(pts
+			(xy 100.33 88.9) (xy 100.33 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dcf600fa-f6ac-49de-8ed5-8f3143c3d7a1")
+	)
+	(wire
+		(pts
 			(xy 133.35 29.21) (xy 97.79 29.21)
 		)
 		(stroke
@@ -3799,26 +3480,6 @@
 			(type default)
 		)
 		(uuid "e8b150fe-64bb-4fd9-9fa7-35400f9a7c4e")
-	)
-	(wire
-		(pts
-			(xy 114.3 87.63) (xy 114.3 90.805)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ecf3071a-304f-441b-992f-1ae3141512cd")
-	)
-	(wire
-		(pts
-			(xy 111.76 87.63) (xy 114.3 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ef8a8933-5a47-4489-8bc7-822d7fc448d0")
 	)
 	(wire
 		(pts
@@ -3862,16 +3523,6 @@
 	)
 	(wire
 		(pts
-			(xy 88.9 97.79) (xy 88.9 99.695)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f7f4e10d-a2ee-41ed-a199-2378826db1cf")
-	)
-	(wire
-		(pts
 			(xy 210.82 90.17) (xy 213.36 90.17)
 		)
 		(stroke
@@ -3911,7 +3562,7 @@
 		(uuid "fdc7f358-5808-4373-a73a-0fdf91246575")
 	)
 	(label "scl"
-		(at 88.9 102.235 0)
+		(at 88.9 100.33 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3951,7 +3602,7 @@
 		(uuid "9149a058-42c2-4e77-98d7-2ef38c7aad39")
 	)
 	(label "sda"
-		(at 88.9 104.775 0)
+		(at 88.9 102.87 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3969,6 +3620,91 @@
 			(justify left bottom)
 		)
 		(uuid "fa9e84cc-524e-4664-93d2-4e4733e7b109")
+	)
+	(symbol
+		(lib_id "AutoWater:RTC DS1307 module")
+		(at 95.25 95.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "00b76a9b-1f67-4f68-8532-4199b10c67cd")
+		(property "Reference" "RTC?"
+			(at 102.87 97.79 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 102.87 100.33 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 95.25 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 95.25 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RTC DS1307 module"
+			(at 95.25 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "SCL"
+			(uuid "18dbdb97-a77b-4cdc-ae32-2d424a41cf49")
+		)
+		(pin "SQW/OUT"
+			(uuid "3e147da3-788a-44c3-a348-8da6ea48bf45")
+		)
+		(pin "DS"
+			(uuid "d3ba9674-c397-414f-b86c-0704927de5b4")
+		)
+		(pin "Vin"
+			(uuid "1cdd2279-ba58-4ff6-a2c8-0bc5d429b2f0")
+		)
+		(pin "SDA"
+			(uuid "fe2a8d37-ba60-407c-b0cf-385d1ea2c4fb")
+		)
+		(pin "Vbat"
+			(uuid "c6d58c43-bb2d-42f5-b5ec-ba22a6dbc948")
+		)
+		(pin "GND"
+			(uuid "3257b0d3-cd9a-4103-9527-5e7ade34574b")
+		)
+		(instances
+			(project ""
+				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/c1e3d899-fb88-4779-97ff-6366d7cafec4"
+					(reference "RTC?")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -4186,94 +3922,6 @@
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/c1e3d899-fb88-4779-97ff-6366d7cafec4"
 					(reference "MCU?")
 					(unit 3)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "AutoWater:RTC DS1307")
-		(at 93.98 92.075 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0938ba2c-a674-4934-a5a2-ffdfbd9426b0")
-		(property "Reference" "RTC?"
-			(at 104.14 103.505 0)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "DS1307"
-			(at 104.14 106.045 0)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 93.98 92.075 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://roboshop.spb.ru/radio/mikroskhemy/real-time-clock/ds1307"
-			(at 93.98 92.075 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Real Time Clock DS1307"
-			(at 93.98 92.075 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "Vin"
-			(uuid "5cc00fc3-bb81-4b09-ad75-a2e3becbed82")
-		)
-		(pin "SCL"
-			(uuid "6ddd5e55-c63e-4159-88f0-0c01bfeec1a7")
-		)
-		(pin "GND"
-			(uuid "94cb9512-da28-4be5-a29b-eb69223c3aec")
-		)
-		(pin "Vbat"
-			(uuid "321b99e8-5547-45a7-8af4-9b2c02f4b953")
-		)
-		(pin "SQW/OUT"
-			(uuid "1904c638-e4b4-4f4c-861c-c0ec34d8257c")
-		)
-		(pin "SDA"
-			(uuid "5c209a72-995b-4fe2-b2dc-cb11a682f51f")
-		)
-		(pin "X1"
-			(uuid "c58e4f81-7d0e-43ce-9906-5aabe85d8ca8")
-		)
-		(pin "X2"
-			(uuid "d499f75a-57fb-4db3-a60d-2a6eb6d483be")
-		)
-		(instances
-			(project ""
-				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/c1e3d899-fb88-4779-97ff-6366d7cafec4"
-					(reference "RTC?")
-					(unit 1)
 				)
 			)
 		)
@@ -5403,72 +5051,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 114.3 90.805 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7c489727-3643-48af-a1c1-ed3130addf92")
-		(property "Reference" "#PWR021"
-			(at 114.3 97.155 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 114.3 95.885 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 114.3 90.805 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 114.3 90.805 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 114.3 90.805 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e40c92f1-79d9-42cb-954c-5e3549bdf55a")
-		)
-		(instances
-			(project ""
-				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/c1e3d899-fb88-4779-97ff-6366d7cafec4"
-					(reference "#PWR021")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "AutoWater:Vs5v")
 		(at 238.76 31.75 0)
 		(unit 1)
@@ -5690,7 +5272,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 99.06 115.57 0)
+		(at 100.33 114.3 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5699,7 +5281,7 @@
 		(fields_autoplaced yes)
 		(uuid "89e44d66-d5dd-477b-bbc5-2f086c172f51")
 		(property "Reference" "#PWR011"
-			(at 99.06 121.92 0)
+			(at 100.33 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5708,7 +5290,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 99.06 120.65 0)
+			(at 100.33 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5716,7 +5298,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 99.06 115.57 0)
+			(at 100.33 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5725,7 +5307,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 99.06 115.57 0)
+			(at 100.33 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5734,7 +5316,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 99.06 115.57 0)
+			(at 100.33 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6703,7 +6285,7 @@
 	)
 	(symbol
 		(lib_id "AutoWater:Vs5v")
-		(at 88.9 85.09 0)
+		(at 100.33 88.9 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6712,7 +6294,7 @@
 		(fields_autoplaced yes)
 		(uuid "c23ff8bd-9b0a-4c0e-9a27-cc5562601526")
 		(property "Reference" "#PWR08"
-			(at 88.9 88.9 0)
+			(at 100.33 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6721,7 +6303,7 @@
 			)
 		)
 		(property "Value" "Vs5v"
-			(at 88.9 80.01 0)
+			(at 100.33 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6729,7 +6311,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 88.9 85.09 0)
+			(at 100.33 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6738,7 +6320,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 88.9 85.09 0)
+			(at 100.33 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6747,7 +6329,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"Vs5v\""
-			(at 88.9 85.09 0)
+			(at 100.33 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6762,214 +6344,6 @@
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/c1e3d899-fb88-4779-97ff-6366d7cafec4"
 					(reference "#PWR08")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "AutoWater:Crystal")
-		(at 118.11 97.155 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ccb5fc74-71fa-46dc-becc-c89a0e5eb379")
-		(property "Reference" "Y?"
-			(at 118.11 93.345 0)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "32.768 kHz"
-			(at 118.11 100.965 0)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 118.11 97.155 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.chipdip.ru/product/smd-rezonator-kse-7r32768kdy2400a3-keen-side-9001296748"
-			(at 118.11 97.155 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Two pin crystal"
-			(at 118.11 97.155 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "42366617-cd90-4487-b965-8ce6fa3c43af")
-		)
-		(pin "2"
-			(uuid "f173ef4c-95a0-4bd9-bbf3-4e7056511595")
-		)
-		(instances
-			(project ""
-				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/c1e3d899-fb88-4779-97ff-6366d7cafec4"
-					(reference "Y?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "AutoWater:Power")
-		(at 107.95 87.63 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "cdd007be-9986-4309-8d3d-98a700e7e473")
-		(property "Reference" "BT?"
-			(at 109.22 86.36 0)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "CR2032"
-			(at 109.22 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 107.95 86.106 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.chipdip.ru/product/l-kls5-cr2032-11-panel-bat-2032-bth-v47-20-kls-8040391090"
-			(at 107.95 86.106 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power"
-			(at 107.95 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "Vout"
-			(uuid "70cd10e9-4f0c-4395-95d9-3776d3d82c44")
-		)
-		(pin "GND"
-			(uuid "54b96f5a-1ff7-4713-8d7c-f1200fc5e064")
-		)
-		(instances
-			(project ""
-				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/c1e3d899-fb88-4779-97ff-6366d7cafec4"
-					(reference "BT?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "AutoWater:Resistor")
-		(at 88.9 93.98 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "dc339ab6-e8d2-4dcb-a48b-2042941ca052")
-		(property "Reference" "R?"
-			(at 90.805 90.17 90)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "2.2K"
-			(at 88.9 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 88.9 92.202 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.chipdip.ru/product/ac1206jr-072k2l-yageo-8002030474"
-			(at 88.9 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 88.9 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5cfb6b86-5a5c-4547-ba7c-27021b6ee124")
-		)
-		(pin "2"
-			(uuid "d411fb91-ad8e-4c11-a7a7-78132e364a72")
-		)
-		(instances
-			(project ""
-				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/c1e3d899-fb88-4779-97ff-6366d7cafec4"
-					(reference "R?")
 					(unit 1)
 				)
 			)
