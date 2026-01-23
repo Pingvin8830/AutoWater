@@ -645,6 +645,18 @@
     [
       "9c9c7373-5af3-48f7-b840-36e6b46427ae",
       "Root"
+    ],
+    [
+      "c1e3d899-fb88-4779-97ff-6366d7cafec4",
+      "Motherboard"
+    ],
+    [
+      "cbcf2951-e2aa-47d5-b5d6-ffbbc0db7604",
+      "WaterModule"
+    ],
+    [
+      "60800294-856f-4bcb-a194-133197c72ad2",
+      "StateModule"
     ]
   ],
   "text_variables": {}
