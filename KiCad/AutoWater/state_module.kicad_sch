@@ -651,14 +651,14 @@
 			(embedded_fonts no)
 		)
 		(symbol "AutoWater:State module"
-			(pin_names
+			(pin_numbers
 				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "SM?"
-				(at 5.08 -2.54 0)
+			(property "Reference" "SM2"
+				(at 2.54 -7.62 0)
 				(do_not_autoplace)
 				(effects
 					(font
@@ -675,7 +675,7 @@
 					(hide yes)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "AutoWater:PLS-4"
 				(at 0 0 0)
 				(effects
 					(font
@@ -714,7 +714,7 @@
 			(symbol "State module_0_1"
 				(rectangle
 					(start 0 0)
-					(end 10.16 -12.7)
+					(end 10.16 -15.24)
 					(stroke
 						(width 0)
 						(type default)
@@ -735,7 +735,7 @@
 							)
 						)
 					)
-					(number "Vin"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -744,7 +744,7 @@
 					)
 				)
 				(pin passive line
-					(at 5.08 -15.24 90)
+					(at 5.08 -17.78 90)
 					(length 2.54)
 					(name "GND"
 						(effects
@@ -753,7 +753,7 @@
 							)
 						)
 					)
-					(number "GND"
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -771,7 +771,7 @@
 							)
 						)
 					)
-					(number "SER"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -789,7 +789,7 @@
 							)
 						)
 					)
-					(number "CLK"
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1083,6 +1083,16 @@
 	)
 	(wire
 		(pts
+			(xy 24.13 52.07) (xy 24.13 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6601b20f-da8b-431b-8904-4344cbb70507")
+	)
+	(wire
+		(pts
 			(xy 34.29 41.91) (xy 34.29 44.45)
 		)
 		(stroke
@@ -1230,16 +1240,6 @@
 			(type default)
 		)
 		(uuid "98338d8b-ace6-4794-bf99-6d09890b63cc")
-	)
-	(wire
-		(pts
-			(xy 24.13 49.53) (xy 24.13 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9e4003b0-557d-4330-adfd-22cb807e60bd")
 	)
 	(wire
 		(pts
@@ -1511,7 +1511,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "00fce875-d9fa-4c0b-b2f9-967830b0bc91")
-		(property "Reference" "REG?"
+		(property "Reference" "REG1"
 			(at 45.72 46.99 0)
 			(do_not_autoplace yes)
 			(effects
@@ -1529,7 +1529,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Register 74HC164M SOP-14"
 			(at 39.37 26.67 0)
 			(effects
 				(font
@@ -1601,7 +1601,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "REG?")
+					(reference "REG1")
 					(unit 1)
 				)
 			)
@@ -1617,7 +1617,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1fb4ccae-a81a-48e9-8e45-145cd588ed01")
-		(property "Reference" "R?"
+		(property "Reference" "R4"
 			(at 71.12 20.32 0)
 			(do_not_autoplace yes)
 			(effects
@@ -1634,7 +1634,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 69.342 22.86 90)
 			(effects
 				(font
@@ -1670,7 +1670,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "R?")
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -1686,7 +1686,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "22c3293f-4138-4640-b5be-d283acf8a9be")
-		(property "Reference" "D?"
+		(property "Reference" "D6"
 			(at 81.28 40.64 0)
 			(do_not_autoplace yes)
 			(effects
@@ -1704,7 +1704,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 81.28 43.18 0)
 			(effects
 				(font
@@ -1749,7 +1749,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "D?")
+					(reference "D6")
 					(unit 1)
 				)
 			)
@@ -1765,7 +1765,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "23f039f5-30e1-4faa-9536-8620237aa6c0")
-		(property "Reference" "D?"
+		(property "Reference" "D9"
 			(at 81.28 55.88 0)
 			(do_not_autoplace yes)
 			(effects
@@ -1783,7 +1783,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 81.28 58.42 0)
 			(effects
 				(font
@@ -1828,7 +1828,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "D?")
+					(reference "D9")
 					(unit 1)
 				)
 			)
@@ -1844,7 +1844,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2eb40e7f-480c-4b70-b857-294c791f994b")
-		(property "Reference" "R?"
+		(property "Reference" "R8"
 			(at 71.12 40.64 0)
 			(do_not_autoplace yes)
 			(effects
@@ -1861,7 +1861,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 69.342 43.18 90)
 			(effects
 				(font
@@ -1897,7 +1897,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "R?")
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -1913,7 +1913,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "318c77b8-5a6d-48e5-abd2-05e63beb3a1f")
-		(property "Reference" "D?"
+		(property "Reference" "D4"
 			(at 81.28 30.48 0)
 			(do_not_autoplace yes)
 			(effects
@@ -1931,7 +1931,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 81.28 33.02 0)
 			(effects
 				(font
@@ -1976,7 +1976,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "D?")
+					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -1992,8 +1992,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4fb9c386-d06a-4461-8e15-8bd06af98f22")
-		(property "Reference" "SM?"
-			(at 24.13 36.83 0)
+		(property "Reference" "SM2"
+			(at 21.59 41.91 0)
 			(do_not_autoplace yes)
 			(effects
 				(font
@@ -2010,7 +2010,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:PLS-4"
 			(at 19.05 34.29 0)
 			(effects
 				(font
@@ -2037,22 +2037,22 @@
 				(hide yes)
 			)
 		)
-		(pin "SER"
+		(pin "2"
 			(uuid "a6dcbaff-be92-431c-8a60-d8fe30005ca8")
 		)
-		(pin "CLK"
+		(pin "1"
 			(uuid "1f6d745b-89cb-4ea8-9279-5456935d4832")
 		)
-		(pin "GND"
+		(pin "4"
 			(uuid "61762626-4fd4-4fb6-b2cb-6bc3920a8c25")
 		)
-		(pin "Vin"
+		(pin "3"
 			(uuid "7cc2ee8e-1ae4-4834-9f8e-dfa5a9416d6f")
 		)
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "SM?")
+					(reference "SM2")
 					(unit 1)
 				)
 			)
@@ -2068,7 +2068,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "51977101-d60a-4181-a768-06e2cc0aec09")
-		(property "Reference" "R?"
+		(property "Reference" "R6"
 			(at 71.12 30.48 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2085,7 +2085,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 69.342 33.02 90)
 			(effects
 				(font
@@ -2121,7 +2121,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "R?")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -2137,7 +2137,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "51c026d1-9503-411e-bdfc-43103ef8a773")
-		(property "Reference" "R?"
+		(property "Reference" "R10"
 			(at 71.12 50.8 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2154,7 +2154,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 69.342 53.34 90)
 			(effects
 				(font
@@ -2190,7 +2190,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "R?")
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -2206,7 +2206,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "66cb6eb0-c69e-45b5-a71b-5afda2e37b01")
-		(property "Reference" "R?"
+		(property "Reference" "R5"
 			(at 71.12 25.4 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2223,7 +2223,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 69.342 27.94 90)
 			(effects
 				(font
@@ -2259,7 +2259,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "R?")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -2275,7 +2275,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "74ef97c2-46b0-419a-bdf2-3a573043bbd6")
-		(property "Reference" "R?"
+		(property "Reference" "R9"
 			(at 71.12 45.72 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2292,7 +2292,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 69.342 48.26 90)
 			(effects
 				(font
@@ -2328,7 +2328,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "R?")
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -2344,7 +2344,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9acc55b6-26c8-4d55-b249-8dcc2489b121")
-		(property "Reference" "R?"
+		(property "Reference" "R11"
 			(at 71.12 55.88 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2361,7 +2361,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 69.342 58.42 90)
 			(effects
 				(font
@@ -2397,7 +2397,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "R?")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -2413,7 +2413,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ae8a0546-6c75-409f-be69-e73e3de3cba6")
-		(property "Reference" "D?"
+		(property "Reference" "D8"
 			(at 81.28 50.8 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2431,7 +2431,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 81.28 53.34 0)
 			(effects
 				(font
@@ -2476,7 +2476,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "D?")
+					(reference "D8")
 					(unit 1)
 				)
 			)
@@ -2492,7 +2492,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b12659e8-6d0c-4853-919c-965fa0ecef41")
-		(property "Reference" "D?"
+		(property "Reference" "D7"
 			(at 81.28 45.72 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2510,7 +2510,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 81.28 48.26 0)
 			(effects
 				(font
@@ -2555,7 +2555,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "D?")
+					(reference "D7")
 					(unit 1)
 				)
 			)
@@ -2571,7 +2571,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d3f0dbc7-300a-4f78-85d3-4518f4017236")
-		(property "Reference" "D?"
+		(property "Reference" "D3"
 			(at 81.28 25.4 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2589,7 +2589,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 81.28 27.94 0)
 			(effects
 				(font
@@ -2634,7 +2634,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "D?")
+					(reference "D3")
 					(unit 1)
 				)
 			)
@@ -2650,7 +2650,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d59cb00d-c7e6-4e24-8c62-2ed1efa50e0d")
-		(property "Reference" "D?"
+		(property "Reference" "D5"
 			(at 81.28 35.56 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2668,7 +2668,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 81.28 38.1 0)
 			(effects
 				(font
@@ -2713,7 +2713,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "D?")
+					(reference "D5")
 					(unit 1)
 				)
 			)
@@ -2729,7 +2729,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ed2f3c43-2fc1-4ce6-a8d2-cf8cd21d8a5a")
-		(property "Reference" "R?"
+		(property "Reference" "R7"
 			(at 71.12 35.56 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2746,7 +2746,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:Resistor Yageo SMD 1206"
 			(at 69.342 38.1 90)
 			(effects
 				(font
@@ -2782,7 +2782,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "R?")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -2798,7 +2798,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f2e39f5a-c9ae-4c31-b791-10e7d5515a5c")
-		(property "Reference" "D?"
+		(property "Reference" "D2"
 			(at 81.28 20.32 0)
 			(do_not_autoplace yes)
 			(effects
@@ -2816,7 +2816,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AutoWater:LED 3mm"
 			(at 81.28 22.86 0)
 			(effects
 				(font
@@ -2861,7 +2861,7 @@
 		(instances
 			(project ""
 				(path "/9c9c7373-5af3-48f7-b840-36e6b46427ae/60800294-856f-4bcb-a194-133197c72ad2"
-					(reference "D?")
+					(reference "D2")
 					(unit 1)
 				)
 			)

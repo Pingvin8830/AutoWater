@@ -100,7 +100,7 @@
 			)
 		)
 	)
-	(pad "GND" thru_hole rect
+	(pad "1" thru_hole rect
 		(at 0 0)
 		(size 2.02 2.02)
 		(drill 1.02)
@@ -108,15 +108,15 @@
 		(remove_unused_layers no)
 		(uuid "ad3429a0-9f4b-41c7-ac18-e580abf32081")
 	)
-	(pad "SCL" thru_hole circle
-		(at 7.62 0)
+	(pad "2" thru_hole circle
+		(at 2.54 0)
 		(size 2.02 2.02)
 		(drill 1.02)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "aa1e5039-d986-4b67-a976-5a2819ac9305")
+		(uuid "10d91cfc-e42a-497e-bdd5-9734b8ad15f2")
 	)
-	(pad "SDA" thru_hole circle
+	(pad "3" thru_hole circle
 		(at 5.08 0)
 		(size 2.02 2.02)
 		(drill 1.02)
@@ -124,13 +124,13 @@
 		(remove_unused_layers no)
 		(uuid "9b5c5ac3-1ca4-4f71-b1e4-ad6d0e34eae0")
 	)
-	(pad "Vin" thru_hole circle
-		(at 2.54 0)
+	(pad "4" thru_hole circle
+		(at 7.62 0)
 		(size 2.02 2.02)
 		(drill 1.02)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "10d91cfc-e42a-497e-bdd5-9734b8ad15f2")
+		(uuid "aa1e5039-d986-4b67-a976-5a2819ac9305")
 	)
 	(embedded_fonts no)
 )

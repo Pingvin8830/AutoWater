@@ -78,8 +78,8 @@
 		(uuid "755112ca-67d9-494b-a79e-9043ad5d9b0b")
 	)
 	(fp_rect
-		(start -1.27 1.29)
-		(end 41.93 -16.51)
+		(start -1.27 -16.51)
+		(end 39.39 -13.97)
 		(stroke
 			(width 0.1)
 			(type solid)
@@ -87,6 +87,17 @@
 		(fill no)
 		(layer "F.Fab")
 		(uuid "fdbc67e5-c4d9-4a33-82a7-979dbd24e102")
+	)
+	(fp_rect
+		(start -1.27 -1.27)
+		(end 39.39 1.27)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "1fd83935-558e-4a32-a02e-6b20a9e554e9")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 24.13 -5.08 0)
